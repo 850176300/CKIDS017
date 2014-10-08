@@ -1,0 +1,21 @@
+{
+	"babys":[
+         {
+         "item":"girl_1",
+         "isFree":true
+         },
+		{
+             "item":"boy_1",
+             "isFree":true
+		},
+		{
+             "item":"girl_2",
+             "isFree":true
+		},
+         {
+             "item":"boy_2",
+             "isFree":true
+         }
+	]
+
+}
