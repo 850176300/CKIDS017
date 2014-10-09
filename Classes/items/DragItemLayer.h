@@ -64,6 +64,8 @@ public:
     CCPoint convertToWorld(CCPoint resPos);
     void addItemtoContainer(ItemBase* pitem);
     void reloadChildren(ItemBase* pItem);
+    void scrolltoLeft(float dt = 0);
+    void scrolltoRight(float dt = 0);
 private:
     CCArray* itemArray;
     ClipLayer* _frame;//边框，添加背景图片和_container

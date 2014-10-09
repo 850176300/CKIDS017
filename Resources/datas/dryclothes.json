@@ -1,64 +1,64 @@
 {
     "allItems": [
-        {
-            "itemName": "colours_1", 
-            "leftPoint": "{39,154}", 
-            "rightPoint": "{183,154}"
-        }, 
-        {
-            "itemName": "colours_2", 
-            "leftPoint": "{22,121}", 
-            "rightPoint": "{176,121}"
-        }, 
-        {
-            "itemName": "colours_3", 
-            "leftPoint": "{55,184}", 
-            "rightPoint": "{175.8,184}"
-        }, 
-        {
-            "itemName": "colours_4", 
-            "leftPoint": "{22,117}", 
-            "rightPoint": "{177,117}"
-        }, 
-        {
-            "itemName": "colours_5", 
-            "leftPoint": "{6,162}", 
-            "rightPoint": "{142,162}"
-        }, 
-        {
-            "itemName": "colours_6", 
-            "leftPoint": "{53,155}", 
-            "rightPoint": "{183,155}"
-        }, 
-        {
-            "itemName": "white_1", 
-            "leftPoint": "{77,176}", 
-            "rightPoint": "{198,176}"
-        }, 
-        {
-            "itemName": "white_2", 
-            "leftPoint": "{12,140}", 
-            "rightPoint": "{206,140}"
-        }, 
-        {
-            "itemName": "white_3", 
-            "leftPoint": "{20,194}", 
-            "rightPoint": "{157,194}"
-        }, 
-        {
-            "itemName": "white_4", 
-            "leftPoint": "{57.5,135}", 
-            "rightPoint": "{0,0}"
-        }, 
-        {
-            "itemName": "white_5", 
-            "leftPoint": "{10,112}", 
-            "rightPoint": "{181,112}"
-        }, 
-        {
-            "itemName": "white_6", 
-            "leftPoint": "{58,158}", 
-            "rightPoint": "{181,158}"
-        }
-    ]
+                 {
+                 "itemName": "colours_1",
+                 "leftPoint": "{39,154}",
+                 "rightPoint": "{183,154}"
+                 },
+                 {
+                 "itemName": "white_4",
+                 "leftPoint": "{57.5,135}",
+                 "rightPoint": "{0,0}"
+                 },
+                 {
+                 "itemName": "colours_3",
+                 "leftPoint": "{55,184}",
+                 "rightPoint": "{175.8,184}"
+                 },
+                 {
+                 "itemName": "white_2",
+                 "leftPoint": "{12,140}",
+                 "rightPoint": "{206,140}"
+                 },
+                 {
+                 "itemName": "colours_5",
+                 "leftPoint": "{6,162}",
+                 "rightPoint": "{142,162}"
+                 },
+                 {
+                 "itemName": "white_1",
+                 "leftPoint": "{77,176}",
+                 "rightPoint": "{198,176}"
+                 },
+                 {
+                 "itemName": "colours_2",
+                 "leftPoint": "{22,121}",
+                 "rightPoint": "{176,121}"
+                 },
+                 {
+                 "itemName": "white_3",
+                 "leftPoint": "{20,194}",
+                 "rightPoint": "{157,194}"
+                 },
+                 {
+                 "itemName": "colours_6",
+                 "leftPoint": "{53,155}",
+                 "rightPoint": "{183,155}"
+                 },
+                 {
+                 "itemName": "white_5",
+                 "leftPoint": "{10,112}",
+                 "rightPoint": "{181,112}"
+                 }, 
+                 {
+                 "itemName": "colours_4", 
+                 "leftPoint": "{22,117}", 
+                 "rightPoint": "{177,117}"
+                 }, 
+                 {
+                 "itemName": "white_6", 
+                 "leftPoint": "{58,158}", 
+                 "rightPoint": "{181,158}"
+                 }
+                 ]
 }

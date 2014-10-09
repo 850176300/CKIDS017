@@ -26,11 +26,13 @@ enum DryClothesTags{
 class LittleClothe: public CCNode{
 private:
     CCSize clotheContentSize;
+    CCSprite* clotheSprite;
 public:
     static LittleClothe* createWithClothe(DryClothe clothe);
     bool initWithClothe(DryClothe clothe);
     CCRect getclotheBouning();
     void additem(MovableItem* pItem);
+    void changetexture(MovableItem* pItem);
 };
 
 class DryClothes : public GameLayerBase, public MovableItemDelegate{
@@ -38,11 +40,17 @@ public:
     static CCScene* scene();
     virtual bool init();
     CREATE_FUNC(DryClothes);
+    virtual void onEnterTransitionDidFinish();
+    virtual void onEnter();
+    virtual void onExit();
     virtual void ItemDidBackToStartLocation(MovableItem* pItem);
     virtual void itemDidMoved(MovableItem* pItem, CCPoint detla);
     virtual void itemTouchDidBegan(ItemBase* pItem, CCTouch *pTouch);
 private:
+    CCNode* _littlecontainer;
     DragItemLayer* dragLayer;
     CCScrollView * littleClotheScrollView;
+    
+    void scrollClothes();
 };
 #endif /* defined(__CKIDS017__DryClothes__) */

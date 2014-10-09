@@ -208,7 +208,10 @@ bool DragItemLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent){
         CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(DragItemLayer::_touchBeginSchedule), this, 0.2, 1, 0, false);
         m_pBeginTouch = pTouch;
     }
-    return true;
+    if (CCRectMake(STVisibleRect::getOriginalPoint().x, _frame->boundingBox().origin.y, STVisibleRect::getGlvisibleSize().width, _frame->boundingBox().size.height).containsPoint(beganPos)) {
+        return true;
+    }
+    return false;
 }
 
 void DragItemLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent){
@@ -384,6 +387,26 @@ void DragItemLayer::reloadChildren(ItemBase *pItem){
 
 }
 
+
+void DragItemLayer::scrolltoLeft(float dt) {
+    if (dt == 0) {
+        _container->setPositionX(-_scrollSize.width+_frame->getContentSize().width);
+        _contentOffset.x = _scrollSize.width-_frame->getContentSize().width;
+    }else {
+        _distanceSize = CCSizeMake(-_scrollSize.width+_frame->getContentSize().width + _contentOffset.x, 0);
+        schedule(schedule_selector(DragItemLayer::deaccelerateScrolling), 0.02, 14, 0);
+    }
+}
+
+void DragItemLayer::scrolltoRight(float dt) {
+    if (dt == 0) {
+        _container->setPositionX(0);
+        _contentOffset.x = 0;
+    }else {
+        _distanceSize = CCSizeMake(_contentOffset.x-0, 0);
+        schedule(schedule_selector(DragItemLayer::deaccelerateScrolling), 0.02, 14, 0);
+    }
+}
 
 #pragma mark 裁剪超出边框部分(clipLayer)
 bool ClipLayer::init(){

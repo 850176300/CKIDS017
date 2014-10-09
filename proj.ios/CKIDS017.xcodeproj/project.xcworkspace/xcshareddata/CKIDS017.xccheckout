@@ -5,47 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>5519B6A7-5D2F-4CE0-93BC-50EEA6C44B86</string>
+	<string>C7116856-9DB3-4D65-AFFD-DF5B8D1E60B7</string>
 	<key>IDESourceControlProjectName</key>
 	<string>CKIDS017</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>081EC5E1-8D1D-4A73-A573-DDF0655BF7D2</key>
-		<string>http://svn.stm.com/svn/make/trunk/CKIDS017</string>
+		<key>40791DE8-ECF3-4553-A21C-AD0786D346BE</key>
+		<string>https://github.com/850176300/CKIDS017.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>proj.ios/CKIDS017.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>081EC5E1-8D1D-4A73-A573-DDF0655BF7D2</key>
+		<key>40791DE8-ECF3-4553-A21C-AD0786D346BE</key>
 		<string>../../..</string>
 	</dict>
-	<key>IDESourceControlProjectRepositoryRootDictionary</key>
-	<dict>
-		<key>081EC5E1-8D1D-4A73-A573-DDF0655BF7D2</key>
-		<string>http://svn.stm.com/svn/make</string>
-	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>http://svn.stm.com/svn/make/trunk/CKIDS017/proj.ios/CKIDS017.xcodeproj</string>
+	<string>https://github.com/850176300/CKIDS017.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>081EC5E1-8D1D-4A73-A573-DDF0655BF7D2</string>
+	<string>40791DE8-ECF3-4553-A21C-AD0786D346BE</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
-			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
-			<string>branches</string>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.subversion</string>
-			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
-			<string>tags</string>
-			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
-			<string>trunk</string>
+			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>081EC5E1-8D1D-4A73-A573-DDF0655BF7D2</string>
+			<string>40791DE8-ECF3-4553-A21C-AD0786D346BE</string>
 			<key>IDESourceControlWCCName</key>
-			<string>CKIDS017</string>
+			<string>CKIDS017_GIT</string>
 		</dict>
 	</array>
 </dict>
