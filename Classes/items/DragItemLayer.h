@@ -60,7 +60,7 @@ public:
     virtual void onEnter();
     virtual void onExit();
 
-    void setFrame(const char* framePath, float widthSpace = 20, float heightSpace = 10,CCPoint pos = ccp(0, 0));
+    void setFrame(const char* framePath, float widthSpace = 20, float heightSpace = 20,CCPoint pos = ccp(0, 0));
     CCPoint convertToWorld(CCPoint resPos);
     void addItemtoContainer(ItemBase* pitem);
     void reloadChildren(ItemBase* pItem);

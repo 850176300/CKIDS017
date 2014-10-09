@@ -12,6 +12,7 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "TouchNodeTon.h"
+
 USING_NS_CC;
 using namespace std;
 enum BabyTags{

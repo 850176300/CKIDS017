@@ -45,6 +45,7 @@ public:
     void gotoPlanting(bool reset = false);
     void gotoWashClothes(bool reset = false);
     void gotoDryClothes(bool reset = false);
+    void gotoCleanRoom(bool reset = false);
 };
 
 #endif /* defined(__BBQParty__GameController__) */

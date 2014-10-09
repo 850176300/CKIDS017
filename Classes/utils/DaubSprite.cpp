@@ -81,7 +81,8 @@ DaubSprite* DaubSprite::create(CCSize size, Scribble *scribble,CCSprite *sprite)
 
  bool DaubSprite::initWithWidthAndHeight(int w, int h, CCTexture2DPixelFormat eFormat, GLuint uDepthStencilFormat){
     const float lFitSize = 370;//min 353
-    
+     eraserFinished = false;
+     paintFinished = false;
     if (w < lFitSize) {
         w = lFitSize;
         

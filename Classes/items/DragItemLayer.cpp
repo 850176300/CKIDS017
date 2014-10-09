@@ -101,7 +101,7 @@ bool DragItemLayer::initWithArray(Direction direc,cocos2d::CCArray *arr) {
 
 void DragItemLayer::onEnter(){
     CCLayer::onEnter();
-    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, -1, true);
+    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, kCCMenuHandlerPriority, true);
 }
 
 void DragItemLayer::onExit(){
@@ -143,7 +143,7 @@ void DragItemLayer::setFrame(const char *framePath,float widthSpace/* = 10*/, fl
             if (selfDefinePos) {
                 bg->setPosition(pos);
             }else {
-                bg->setPosition(ccp(STVisibleRect::getOriginalPoint().x+50, STVisibleRect::getCenterOfScene().y));
+                bg->setPosition(ccp(STVisibleRect::getOriginalPoint().x+10, STVisibleRect::getCenterOfScene().y));
             }
             _frame->setPosition(bg->getPosition()+ccp(widthSpace, 0));
             _scrollSize.width = _frame->getContentSize().width;
@@ -196,6 +196,7 @@ void DragItemLayer::_touchBeginSchedule(float dt)
 
 bool DragItemLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent){
     beganPos = convertTouchToNodeSpace(pTouch);
+    m_fTimeTouchBegin = CocosHelper::milliSecondNow();
     if (_frame->boundingBox().containsPoint(beganPos)) {
         _container->stopAllActions();
         canMove = true;
@@ -224,26 +225,26 @@ void DragItemLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent){
         return;
     }
     float timeDelta = CocosHelper::milliSecondNow() - m_fTimeTouchBegin;
-    CCLog("the time delta is %f", timeDelta);
+//    CCLog("the time delta is %f", timeDelta);
     if(timeDelta >= 100.0 && !m_bTouchDecided){
-        CCLog("_dispatchTouch");
+//        CCLog("_dispatchTouch");
         m_bTouchDecided = true;
         _dispatchTouch(pTouch);
     }else {//如果时间差比较短，则优先滚动
-        float lDeltaX = fabs(m_tTouchBeginPt.x - pTouch->getLocation().x);
-        float lDeltaY = (pTouch->getLocation().y - m_tTouchBeginPt.y);
-        CCLog("lDeltaX = %f, lDeltaY = %f", lDeltaX, lDeltaY);
-        if (lDeltaX < 10.0 && lDeltaY > 3.0 && !m_bTouchDecided) {
-            CCLog("_dispatchTouch");
-            m_bTouchDecided = true;
-            _dispatchTouch(pTouch);
-        }else if(lDeltaX < 10.0 && lDeltaY == 0.0 && !m_bTouchDecided) {
-            CCLog("_dispatchTouch");
-            m_bTouchDecided = true;
-            _dispatchTouch(pTouch);
-        }else{
-            CCLog("滚动");
-            
+//        float lDeltaX = fabs(m_tTouchBeginPt.x - pTouch->getLocation().x);
+//        float lDeltaY = (pTouch->getLocation().y - m_tTouchBeginPt.y);
+//        CCLog("lDeltaX = %f, lDeltaY = %f", lDeltaX, lDeltaY);
+//        if (lDeltaX < 10.0 && lDeltaY > 3.0 && !m_bTouchDecided) {
+//            CCLog("_dispatchTouch");
+//            m_bTouchDecided = true;
+//            _dispatchTouch(pTouch);
+//        }else if(lDeltaX < 10.0 && lDeltaY == 0.0 && !m_bTouchDecided) {
+//            CCLog("_dispatchTouch");
+//            m_bTouchDecided = true;
+//            _dispatchTouch(pTouch);
+//        }else{
+//            CCLog("滚动");
+//
             m_bTouchDecided = true;
             CCPoint delta = pTouch->getDelta();
             if (_direction == kDragLayerHorizontal) {
@@ -263,7 +264,8 @@ void DragItemLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent){
                 _container->setPosition(ccp(_container->getPositionX(), _container->getPositionY() + delta.y));
                 
             }
-        }
+//        }
+        CCLog("cctouchmove---->the layer content offset is (%.2f, %.2f)", _contentOffset.x, _contentOffset.y);
         
     }
 
@@ -280,6 +282,7 @@ void DragItemLayer::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent){
 void DragItemLayer::moveEnd(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
     m_pBeginTouch = NULL;
     //如果本次触摸发生过移动，则需要判断工具应该停留在哪一页.
+    CCLog("cctouchend----->the layer content offset is (%.2f, %.2f)", _contentOffset.x, _contentOffset.y);
     if(m_bTouchMoved)
     {
         performDistance = CCPointZero;
@@ -299,7 +302,7 @@ void DragItemLayer::moveEnd(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
                 _distanceSize = CCSizeMake(0,_contentOffset.y);
                 schedule(schedule_selector(DragItemLayer::deaccelerateScrolling), 0.02, 14, 0);
             }
-            if (_contentOffset.y > _scrollSize.height-_contentOffset.y-_frame->getContentSize().height) {
+            if (_contentOffset.y > _scrollSize.height-_frame->getContentSize().height) {
                 _distanceSize = CCSizeMake(0, -_scrollSize.height+_contentOffset.y+_frame->getContentSize().height);
                 CCLog("the distance size is %.2f, %.2f", _distanceSize.width, _distanceSize.height);
                 schedule(schedule_selector(DragItemLayer::deaccelerateScrolling), 0.02, 14, 0);

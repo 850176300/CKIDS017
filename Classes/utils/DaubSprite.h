@@ -26,11 +26,14 @@ class DaubSprite: public CCRenderTexture,public CCTargetedTouchDelegate {
     float _alphaTestValue;
 protected:
     long calcute(CCImage *pImage);
-
+    
 public:
     DaubSprite();
     virtual ~DaubSprite();
 
+    //标志类变量
+    bool eraserFinished;
+    bool paintFinished;
     static DaubSprite* create( Scribble *scribble,CCSprite *sprite);
     static DaubSprite* create(CCSize size, Scribble *scribble,CCSprite *sprite);
     bool initWithWidthAndHeight(int w, int h, CCTexture2DPixelFormat eFormat, GLuint uDepthStencilFormat);

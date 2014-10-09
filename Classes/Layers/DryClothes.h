@@ -50,7 +50,8 @@ private:
     CCNode* _littlecontainer;
     DragItemLayer* dragLayer;
     CCScrollView * littleClotheScrollView;
-    
+    int completeCount;//完成的个数
     void scrollClothes();
+    void showWellDone();
 };
 #endif /* defined(__CKIDS017__DryClothes__) */

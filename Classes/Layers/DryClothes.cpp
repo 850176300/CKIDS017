@@ -10,6 +10,7 @@
 #include "DataContainer.h"
 #include "CocosHelper.h"
 #include "TipLayer.h"
+#include "WellDoneLayer.h"
 
 CCScene* DryClothes::scene(){
     CCScene* scene = CCScene::create();
@@ -23,6 +24,7 @@ CCScene* DryClothes::scene(){
 
 bool DryClothes::init(){
     if (GameLayerBase::initWithBgFileName(DryClothesBGPath)) {
+        completeCount = 0;
         CCArray* dragItems = CCArray::createWithCapacity(6);
         _littlecontainer = CCNode::create();
         CCPoint alongPoint = ccp(0, ContainerHeight);
@@ -41,8 +43,14 @@ bool DryClothes::init(){
             item->setTag(kClotheEntryFirst + i + 1);
             dragItems->addObject(item);
             
+            int times = 0;
+            if (allClothe[i].clotheName.find("white") != string::npos) {
+                times = 1;
+            }
+            char num = allClothe[i].clotheName.at(allClothe[i].clotheName.size() - 1);
+            CCLog("the model tag is %d", (int)(num - '0') + 6 * times);
             LittleClothe* clothe = LittleClothe::createWithClothe(allClothe[i]);
-            clothe->setTag(kClotheModelFirst + i + 1);
+            clothe->setTag(kClotheModelFirst + (int)(num - '0') + 6 * times);
             clothe->setAnchorPoint(ccp(0, 1.0));
             clothe->setPosition(alongPoint);
             alongPoint = alongPoint + ccp(clothe->getContentSize().width+ContainerOffset, 0);
@@ -111,14 +119,27 @@ void DryClothes::ItemDidBackToStartLocation(MovableItem *pItem) {
     if (clothe->getclotheBouning().containsPoint(pItem->getPosition() + ccp(pItem->getContentSize().width/2.0, pItem->getContentSize().height/2.0))) {
         clothe->additem(pItem);
         dragLayer->reloadChildren(pItem);
+        completeCount += 1;
+        if (completeCount >= ClothesCount) {
+            dragLayer->runAction(CCSequence::create(CCDelayTime::create(0.3f), CCMoveBy::create(0.5f, ccp(0, -500)),CCCallFunc::create(this, callfunc_selector(DryClothes::showWellDone)), CCCallFunc::create(dragLayer, callfunc_selector(DragItemLayer::removeFromParent)),NULL));
+        }
     }else {
         pItem->removeFromParentAndCleanup(false);
         dragLayer->addItemtoContainer(pItem);
     }
 }
 
+void DryClothes::showWellDone(){
+    WellDoneLayer* welllayer = WellDoneLayer::createWithBoolen(true);
+    welllayer->showINtheNode(this);
+}
+
 void DryClothes::itemDidMoved(MovableItem *pItem, cocos2d::CCPoint detla) {
-    pItem->setPosition(pItem->getPosition()+detla);
+    CCRect clotherect;
+    clotherect.origin = pItem->boundingBox().origin + detla;
+    if (STVisibleRect::JudgeContain(STVisibleRect::getMovableRect(), clotherect)) {
+        pItem->setPosition(pItem->getPosition()+detla);
+    }
 }
 
 void DryClothes::itemTouchDidBegan(ItemBase *pItem, cocos2d::CCTouch *pTouch){
@@ -157,10 +178,7 @@ bool LittleClothe::initWithClothe(DryClothe clothe) {
         CCSprite* rightClamp = CCSprite::create(clamp2);
         clotheSprite = CCSprite::create(clothename);
         
-        int times = 0;
-        if (clothe.clotheName.find("colours") != ) {
-            <#statements#>
-        }
+        
         setContentSize(CCSizeMake(clotheSprite->getContentSize().width, clothe.leftPoint.y+leftClamp->getContentSize().height/2.0));
         clotheSprite->setAnchorPoint(ccp(0, 0));
         clotheSprite->setPosition(ccp(0, 0));

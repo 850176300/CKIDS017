@@ -117,5 +117,9 @@ typedef struct DryClothe{
 #define DryClothesBGPath "bg/bg_drying.jpg"
 #define ContainerHeight (189+29)
 #define ContainerOffset 100
+
+#pragma mark "cleanRoomLayer"
+#define CleanRoomBGPath "bg/bg_cleaning.jpg"
+
 #endif
 

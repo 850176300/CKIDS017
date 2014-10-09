@@ -14,6 +14,7 @@
 #include "PlantingLayer.h"
 #include "WashClothes.h"
 #include "DryClothes.h"
+#include "CleanRoomLayer.h"
 
 GameController::GameController(){
     chooseIndex = kGirlOne;
@@ -48,7 +49,7 @@ float GameController::getBannerHeight() {
         STAds ad;
         ad.getBannerSize(bannerSize);
     }
-    CCLog("=======the banner size width is %.2f, and the height is %.2f", bannerSize[0], bannerSize[1]);
+//    CCLog("=======the banner size width is %.2f, and the height is %.2f", bannerSize[0], bannerSize[1]);
     if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID) {
         return bannerSize[1]-20;
     }
@@ -145,6 +146,27 @@ void GameController::gotoWashClothes(bool reset /*=false*/) {
 
 void GameController::gotoDryClothes(bool reset /*=false*/){
     CCScene* pScene = DryClothes::scene();
+    if (reset == true) {
+        if( CCDirector::sharedDirector()->getRunningScene() ){
+            CCDirector::sharedDirector()->replaceScene(pScene);
+        }
+        else{
+            CCDirector::sharedDirector()->runWithScene(pScene);
+        }
+    }else {
+        CCTransitionScene* transition = CCTransitionMoveInR::create(0.5f, pScene);
+        if( CCDirector::sharedDirector()->getRunningScene() )
+        {
+            CCDirector::sharedDirector()->replaceScene(transition);
+        }
+        else{
+            CCDirector::sharedDirector()->runWithScene(transition);
+        }
+    }
+}
+
+void GameController::gotoCleanRoom(bool reset) {
+    CCScene* pScene = CleanRoomLayer::scene();
     if (reset == true) {
         if( CCDirector::sharedDirector()->getRunningScene() ){
             CCDirector::sharedDirector()->replaceScene(pScene);

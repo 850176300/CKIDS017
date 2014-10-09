@@ -259,6 +259,7 @@
 		01BFBCE719C2921D00C6A097 /* ui in Resources */ = {isa = PBXBuildFile; fileRef = 01BFBCE119C2921D00C6A097 /* ui */; };
 		01C0917919D2B1C700509A40 /* WashClothes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01C0917719D2B1C700509A40 /* WashClothes.cpp */; };
 		01C9A93119C96054003F646F /* TipLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01C9A92F19C96054003F646F /* TipLayer.cpp */; };
+		01D5A68219E6650D0016AC99 /* CleanRoomLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01D5A68019E6650D0016AC99 /* CleanRoomLayer.cpp */; };
 		01D862EC19D274AB00F6D451 /* WellDoneLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01D862EA19D274AA00F6D451 /* WellDoneLayer.cpp */; };
 		01E8FA7A19CD8CC300D45B2D /* LittleSun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01E8FA7819CD8CC300D45B2D /* LittleSun.cpp */; };
 		01E8FA7D19CFF78A00D45B2D /* CloudComp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01E8FA7B19CFF78A00D45B2D /* CloudComp.cpp */; };
@@ -982,6 +983,8 @@
 		01C0917819D2B1C700509A40 /* WashClothes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WashClothes.h; sourceTree = "<group>"; };
 		01C9A92F19C96054003F646F /* TipLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TipLayer.cpp; sourceTree = "<group>"; };
 		01C9A93019C96054003F646F /* TipLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipLayer.h; sourceTree = "<group>"; };
+		01D5A68019E6650D0016AC99 /* CleanRoomLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CleanRoomLayer.cpp; sourceTree = "<group>"; };
+		01D5A68119E6650D0016AC99 /* CleanRoomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CleanRoomLayer.h; sourceTree = "<group>"; };
 		01D862EA19D274AA00F6D451 /* WellDoneLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WellDoneLayer.cpp; sourceTree = "<group>"; };
 		01D862EB19D274AB00F6D451 /* WellDoneLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WellDoneLayer.h; sourceTree = "<group>"; };
 		01E8FA7819CD8CC300D45B2D /* LittleSun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LittleSun.cpp; sourceTree = "<group>"; };
@@ -2497,6 +2500,8 @@
 				01C0917819D2B1C700509A40 /* WashClothes.h */,
 				01B8B15419D5611200C227EF /* DryClothes.cpp */,
 				01B8B15519D5611200C227EF /* DryClothes.h */,
+				01D5A68019E6650D0016AC99 /* CleanRoomLayer.cpp */,
+				01D5A68119E6650D0016AC99 /* CleanRoomLayer.h */,
 			);
 			name = Layers;
 			path = ../Classes/Layers;
@@ -3848,6 +3853,7 @@
 				379BB9A917F03F3700829B88 /* CCSpriteFrameCacheHelper.cpp in Sources */,
 				01D862EC19D274AB00F6D451 /* WellDoneLayer.cpp in Sources */,
 				01E8FA7A19CD8CC300D45B2D /* LittleSun.cpp in Sources */,
+				01D5A68219E6650D0016AC99 /* CleanRoomLayer.cpp in Sources */,
 				01AD396A19C03CAD00DB0808 /* MPIdentityProvider.m in Sources */,
 				01AD37DE19C03C8400DB0808 /* JSONAllocator.cpp in Sources */,
 				379BB9AA17F03F3700829B88 /* CCTransformHelp.cpp in Sources */,
