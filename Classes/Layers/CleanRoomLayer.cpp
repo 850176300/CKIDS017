@@ -27,6 +27,7 @@ bool CleanRoomLayer::init(){
         addCleanerDust();
         addBroom2Items();
         addModItems();
+        addWindowDust();
         return true;
     }
     return false;
@@ -148,6 +149,14 @@ void CleanRoomLayer::addModItems(){
     water2 = CCSprite::create("cleaning/waterlogging_1.png");
     water2->setPosition(STVisibleRect::getPosition(659.5, 108.5) + ccp(0, GameController::getInstance()->getBannerHeight()));
     addChild(water2, 1);
+}
+
+#pragma mark tool5---喷壶
+void CleanRoomLayer::addWindowDust(){
+    dustonWind = CCSprite::create("cleaning/dust_9.png");
+    dustonWind->setPosition(m_pBg->convertToWorldSpace(ccp(863.0, 617.0)));
+    dustonWind->setScale(STVisibleRect::getRealDesignScale());
+    addChild(dustonWind, 1);
 }
 
 void CleanRoomLayer::ItemDidBackToStartLocation(MovableItem *pItem) {
@@ -363,6 +372,15 @@ void CleanRoomLayer::itemDidMoved(MovableItem *pItem, cocos2d::CCPoint detla) {
                 }
                 water2->setOpacity(opacity);
                 water2->setScale(scale);
+            }
+        }
+            break;
+        case kRagToolTags:
+        {
+            
+            if (dustonWind->boundingBox().containsPoint(pItem->getPosition())) {
+                this->ItemDidBackToStartLocation(pItem);
+                GameController::getInstance()->gotoRoomWindow();
             }
         }
             break;

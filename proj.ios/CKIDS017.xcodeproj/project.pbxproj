@@ -17,6 +17,7 @@
 		0116144E19C2E34300A58994 /* introduces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0116144D19C2E34300A58994 /* introduces.txt */; };
 		0116145119C2E35500A58994 /* Baby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0116144F19C2E35500A58994 /* Baby.cpp */; };
 		0116CAF419D161090084DF2B /* SnailLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0116CAF219D161090084DF2B /* SnailLayer.cpp */; };
+		0121C77819E7CC57008AB375 /* WindowLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0121C77619E7CC57008AB375 /* WindowLayer.cpp */; };
 		012F738919BEF771007D2631 /* AlumnAdapterIos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 012F736719BEF771007D2631 /* AlumnAdapterIos.mm */; };
 		012F738A19BEF771007D2631 /* AlumnImpIos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 012F736919BEF771007D2631 /* AlumnImpIos.mm */; };
 		012F738B19BEF771007D2631 /* ImageUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 012F736B19BEF771007D2631 /* ImageUtil.mm */; };
@@ -494,6 +495,8 @@
 		0116145019C2E35500A58994 /* Baby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Baby.h; sourceTree = "<group>"; };
 		0116CAF219D161090084DF2B /* SnailLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SnailLayer.cpp; sourceTree = "<group>"; };
 		0116CAF319D161090084DF2B /* SnailLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnailLayer.h; sourceTree = "<group>"; };
+		0121C77619E7CC57008AB375 /* WindowLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WindowLayer.cpp; sourceTree = "<group>"; };
+		0121C77719E7CC57008AB375 /* WindowLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowLayer.h; sourceTree = "<group>"; };
 		012F736719BEF771007D2631 /* AlumnAdapterIos.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AlumnAdapterIos.mm; sourceTree = "<group>"; };
 		012F736819BEF771007D2631 /* AlumnImpIos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlumnImpIos.h; sourceTree = "<group>"; };
 		012F736919BEF771007D2631 /* AlumnImpIos.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AlumnImpIos.mm; sourceTree = "<group>"; };
@@ -2502,6 +2505,8 @@
 				01B8B15519D5611200C227EF /* DryClothes.h */,
 				01D5A68019E6650D0016AC99 /* CleanRoomLayer.cpp */,
 				01D5A68119E6650D0016AC99 /* CleanRoomLayer.h */,
+				0121C77619E7CC57008AB375 /* WindowLayer.cpp */,
+				0121C77719E7CC57008AB375 /* WindowLayer.h */,
 			);
 			name = Layers;
 			path = ../Classes/Layers;
@@ -3603,6 +3608,7 @@
 				15A3D9191682F7D5002FB0C5 /* b2CircleContact.cpp in Sources */,
 				15A3D91A1682F7D5002FB0C5 /* b2Contact.cpp in Sources */,
 				01F0508419CC235F00C7DE88 /* SunSprite.cpp in Sources */,
+				0121C77819E7CC57008AB375 /* WindowLayer.cpp in Sources */,
 				15A3D91B1682F7D5002FB0C5 /* b2ContactSolver.cpp in Sources */,
 				01AD393319C03CAD00DB0808 /* CJSONScanner.m in Sources */,
 				012F73ED19BEF791007D2631 /* MyDialog.cpp in Sources */,

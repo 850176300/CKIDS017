@@ -64,6 +64,8 @@ private:
     CCSprite* water1;
     CCSprite* water2;
     void addModItems();//添加拖把清除物品
-    
+    /*窗户的污渍**/
+    CCSprite* dustonWind;
+    void addWindowDust();
 };
 #endif /* defined(__CKIDS017__CleanRoomLayer__) */

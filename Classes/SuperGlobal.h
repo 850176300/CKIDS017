@@ -120,6 +120,7 @@ typedef struct DryClothe{
 
 #pragma mark "cleanRoomLayer"
 #define CleanRoomBGPath "bg/bg_cleaning.jpg"
+#define WindowBGPath "bg/bg_cleaning_window.jpg"
 
 #endif
 

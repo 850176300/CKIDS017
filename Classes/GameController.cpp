@@ -15,6 +15,7 @@
 #include "WashClothes.h"
 #include "DryClothes.h"
 #include "CleanRoomLayer.h"
+#include "WindowLayer.h"
 
 GameController::GameController(){
     chooseIndex = kGirlOne;
@@ -184,4 +185,10 @@ void GameController::gotoCleanRoom(bool reset) {
             CCDirector::sharedDirector()->runWithScene(transition);
         }
     }
+}
+
+void GameController::gotoRoomWindow(){
+    CCScene* pScene = WindowLayer::scene();
+    CCTransitionScene* transition = CCTransitionMoveInR::create(0.5f, pScene);
+    CCDirector::sharedDirector()->pushScene(transition);
 }
