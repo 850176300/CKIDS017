@@ -114,6 +114,10 @@ void DragItemLayer::setFrame(const char *framePath,float widthSpace/* = 10*/, fl
     if (pos.x == 0 && pos.y==0){
         selfDefinePos = false;
     }
+//    CCSprite* bg1 = CCSprite::create(framePath);
+////    bg1->setAnchorPoint(ccp(0, 0.5f));
+//    bg1->setPosition(ccp(STVisibleRect::getOriginalPoint().x+10, STVisibleRect::getCenterOfScene().y-STVisibleRect::getOriginalPoint().y));
+//    addChild(bg1, 10);
     CCPoint anchorPP;
     CCSprite* bg = CCSprite::create(framePath);
     _frame->ignoreAnchorPointForPosition(false);
@@ -127,7 +131,7 @@ void DragItemLayer::setFrame(const char *framePath,float widthSpace/* = 10*/, fl
             if (selfDefinePos) {
                 bg->setPosition(pos);
             }else {
-                bg->setPosition(ccp(STVisibleRect::getCenterOfScene().x, STVisibleRect::getOriginalPoint().y+50));
+                bg->setPosition(ccp(STVisibleRect::getGlvisibleSize().width/2.0, STVisibleRect::getOriginalPoint().y+50));
             }
             _frame->setPosition(bg->getPosition()+ccp(0, heightSpace));
             _scrollSize.height = _frame->getContentSize().height;
@@ -137,13 +141,14 @@ void DragItemLayer::setFrame(const char *framePath,float widthSpace/* = 10*/, fl
         case kDragLayerVertical:
         {
             anchorPP = ccp(0, 0.5f);
+            bg->ignoreAnchorPointForPosition(false);
             bg->setAnchorPoint(anchorPP);
             _frame->setAnchorPoint(anchorPP);
             _frame->setContentSize(CCSizeMake(bg->getContentSize().width - widthSpace*2, bg->getContentSize().height-heightSpace*2));
             if (selfDefinePos) {
                 bg->setPosition(pos);
             }else {
-                bg->setPosition(ccp(STVisibleRect::getOriginalPoint().x+10, STVisibleRect::getCenterOfScene().y));
+                bg->setPosition(ccp(STVisibleRect::getOriginalPoint().x+10, STVisibleRect::getGlvisibleSize().height/2.0));
             }
             _frame->setPosition(bg->getPosition()+ccp(widthSpace, 0));
             _scrollSize.width = _frame->getContentSize().width;

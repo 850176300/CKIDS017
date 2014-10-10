@@ -26,7 +26,8 @@ ItemBase* ItemBase::createWithFrameName(const char *apName)
 
 ItemBase::ItemBase():
 m_bTouchable(0),
-m_iTouchPriority(0)
+m_iTouchPriority(0),
+theStartPos(ccp(0, 0))
 {
 }
 
@@ -126,7 +127,9 @@ void ItemBase::setTouchPriority(const int aValue)
 }
 
 void ItemBase::setStartPos(cocos2d::CCPoint pos) {
-    theStartPos = pos;
+    if (theStartPos.x == 0 && theStartPos.y == 0) {
+        theStartPos = pos;
+    }
 }
 
 CCPoint ItemBase::getStartPos(){
