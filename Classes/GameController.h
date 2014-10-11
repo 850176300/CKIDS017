@@ -47,6 +47,7 @@ public:
     void gotoDryClothes(bool reset = false);
     void gotoCleanRoom(bool reset = false);
     void gotoRoomWindow(CCObject* pObj);
+    void gotoRoomMurals(CCObject* pObj);
 };
 
 #endif /* defined(__BBQParty__GameController__) */

@@ -16,6 +16,7 @@
 #include "DryClothes.h"
 #include "CleanRoomLayer.h"
 #include "WindowLayer.h"
+#include "SortMuralsLayer.h"
 
 GameController::GameController(){
     chooseIndex = kGirlOne;
@@ -189,6 +190,13 @@ void GameController::gotoCleanRoom(bool reset) {
 
 void GameController::gotoRoomWindow(cocos2d::CCObject *pObj){
     CCScene* pScene = WindowLayer::scene(pObj);
+    CCTransitionScene* transition = CCTransitionMoveInR::create(0.5f, pScene);
+    CCDirector::sharedDirector()->pushScene(transition);
+}
+
+
+void GameController::gotoRoomMurals(cocos2d::CCObject *pObj) {
+    CCScene* pScene = SortMuralsLayer::scene(pObj);
     CCTransitionScene* transition = CCTransitionMoveInR::create(0.5f, pScene);
     CCDirector::sharedDirector()->pushScene(transition);
 }

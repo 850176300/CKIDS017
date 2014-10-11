@@ -84,10 +84,16 @@ private:
     /*窗户的污渍**/
     CCSprite* dustonWind;
     /*位置错乱的壁画**/
+    MyItemSprite* item1;
+    MyItemSprite* item2;
+    MyItemSprite* item3;
     void addAllMurals();//添加所有壁画
     
     void addWindowDust();
-
+    void onPaintClicked();
     
+    int doneCount;
+    void checkisDone();
+    void addtip();
 };
 #endif /* defined(__CKIDS017__CleanRoomLayer__) */

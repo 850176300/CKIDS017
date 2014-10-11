@@ -35,12 +35,12 @@ bool WellDoneLayer::initWithBoolen(bool isSucceed){
         }
         MyItemSprite* left = NULL;
         if (isSucceed) {
-            left = MyItemSprite::menuItems("ui/home.png");
+            left = MyItemSprite::menuItems("ui/btn_home.png");
         }else {
             left = MyItemSprite::menuItems("ui/home_btn_play.png");
             left->setScale(102.0/178.0);
         }
-        MyItemSprite* reset = MyItemSprite::menuItems("ui/reset.png");
+        MyItemSprite* reset = MyItemSprite::menuItems("ui/btn_reset.png");
         
         
         itemsNode = CCNode::create();

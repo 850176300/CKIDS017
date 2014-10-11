@@ -22,12 +22,17 @@ public:
     bool getBabyisFree(int index);
     vector<LockItem> getAllSeed();//只有get方法
     vector<DryClothe> getallDryClothes();
+    void sortTypes();
+    DeltaPositioin getdeltaTypeAt(int index);
 private:
     vector<LockItem> seeds;
     vector<LockItem> babys;
     vector<DryClothe> dryClothes;
+    vector<DeltaPositioin> deltaTypes;
+    int deltaOrder[3];
 private:
     void loadBabys();
     void loadDryClothes();
+    void loadDeltaFiles();
 };
 #endif /* defined(__CKIDS017__DataContainer__) */

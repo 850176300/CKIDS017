@@ -9,7 +9,9 @@
 #include "CleanRoomLayer.h"
 #include "DragItemLayer.h"
 #include "Scribble.h"
-
+#include "DataContainer.h"
+#include "WellDoneLayer.h"
+#include "TipLayer.h"
 CCScene* CleanRoomLayer::scene(){
     CCScene* scene = CCScene::create();
     
@@ -21,15 +23,19 @@ CCScene* CleanRoomLayer::scene(){
 }
 
 bool CleanRoomLayer::init(){
+    doneCount = 0;
     if (GameLayerBase::initWithBgFileName(CleanRoomBGPath)) {
         _muralState = kRandom;
         _winState = kDirty;
+        DataContainer::getInstance()->sortTypes();
+        addAllMurals();
         addallDust();
         addAlltools();
         addCleanerDust();
         addBroom2Items();
         addModItems();
         addWindowDust();
+        addtip();
         return true;
     }
     return false;
@@ -47,6 +53,19 @@ void CleanRoomLayer::onEnter(){
             MovableItem* pItem = dynamic_cast<MovableItem*>(this->getChildByTag(kRagToolTags));
             this->ItemDidBackToStartLocation(pItem);
         }
+    }
+    if (_muralState == kSort) {
+        _muralState = kSorted;
+        item1->setEnabled(false);
+        item2->setEnabled(false);
+        item3->setEnabled(false);
+        item1->setPosition(STVisibleRect::getPosition(254.5, 660.5));
+        item2->setPosition(STVisibleRect::getPosition(419.6, 660.5));
+        item3->setPosition(STVisibleRect::getPosition(594.5, 660.0));
+        item1->setRotation(0);
+        item2->setRotation(0);
+        item3->setRotation(0);
+        checkisDone();
     }
 }
 
@@ -71,6 +90,56 @@ void CleanRoomLayer::addAlltools(){
     
 }
 
+void CleanRoomLayer::addtip(){
+    CCSprite* sprite = CCSprite::create("ui/prompt/clean_your_room.png");
+    TipLayer *layer = TipLayer::createWithNode(sprite);
+    layer->addToNode(this);
+}
+
+
+#pragma mark 添加所有壁画
+void CleanRoomLayer::addAllMurals(){
+    item1 = MyItemSprite::menuItems("cleaning/painting/painting_1.png");
+    item2 = MyItemSprite::menuItems("cleaning/painting/painting_2.png");
+    item3 = MyItemSprite::menuItems("cleaning/painting/painting_3.png");
+    
+    item1->setScale(0.45f);
+    item2->setScale(0.45f);
+    item3->setScale(0.45f);
+    
+    item1->setPosition(STVisibleRect::getPosition(254.5, 660.5));
+    item2->setPosition(STVisibleRect::getPosition(419.6, 660.5));
+    item3->setPosition(STVisibleRect::getPosition(594.5, 660.0));
+    
+    item1->setTarget(this, menu_selector(CleanRoomLayer::onPaintClicked));
+    item2->setTarget(this, menu_selector(CleanRoomLayer::onPaintClicked));
+    item3->setTarget(this, menu_selector(CleanRoomLayer::onPaintClicked));
+    
+    DeltaPositioin pos1 = DataContainer::getInstance()->getdeltaTypeAt(0);
+    DeltaPositioin pos2 = DataContainer::getInstance()->getdeltaTypeAt(1);
+    DeltaPositioin pos3 = DataContainer::getInstance()->getdeltaTypeAt(2);
+    
+    item1->setPosition(item1->getPosition() + pos1.deltaPos);
+    item1->setRotation(pos1.deltaRotate);
+    
+    item2->setPosition(item2->getPosition() + pos2.deltaPos);
+    item2->setRotation(pos2.deltaRotate);
+    
+    item3->setPosition(item3->getPosition() + pos3.deltaPos);
+    item3->setRotation(pos3.deltaRotate);
+    
+    SMMenu* theMenu = SMMenu::create(item1, item2, item3, NULL);
+    theMenu->setAnchorPoint(CCPointZero);
+    theMenu->setPosition(CCPointZero);
+    addChild(theMenu, 1);
+    theMenu->setTouchPriority(kCCMenuHandlerPriority - 1);
+}
+
+void CleanRoomLayer::onPaintClicked(){
+    GameController::getInstance()->gotoRoomMurals(this);
+}
+
+                     
 #pragma mark tool1-笤帚
 void CleanRoomLayer::addallDust(){
     _scribble = new Scribble(CCSprite::create("burshes/solid_brush.png"));
@@ -217,6 +286,7 @@ void CleanRoomLayer::showtoolLayer(MovableItem *pItem) {
                 dust2->removeFromParent();
                 dust3->removeFromParent();
                 dust4->removeFromParent();
+                checkisDone();
             }
         }
             break;
@@ -230,6 +300,7 @@ void CleanRoomLayer::showtoolLayer(MovableItem *pItem) {
                 dust7->removeFromParent();
                 dust6->removeFromParent();
                 dust5->removeFromParent();
+                checkisDone();
             }
         }
             break;
@@ -245,6 +316,7 @@ void CleanRoomLayer::showtoolLayer(MovableItem *pItem) {
                 paper1->removeFromParent();
                 paper2->removeFromParent();
                 paper3->removeFromParent();
+                checkisDone();
             }
         }
             break;
@@ -258,6 +330,7 @@ void CleanRoomLayer::showtoolLayer(MovableItem *pItem) {
                 pItem->addChild(draw);
                 water1->removeFromParent();
                 water2->removeFromParent();
+                checkisDone();
             }
         }
             break;
@@ -268,6 +341,7 @@ void CleanRoomLayer::showtoolLayer(MovableItem *pItem) {
                 CCSprite* draw = CCSprite::create("ui/prompt/draw.png");
                 draw->setPosition(ccp(pItem->getContentSize().width/2.0, pItem->getContentSize().height/2.0));
                 pItem->addChild(draw);
+                checkisDone();
             }
         }
             break;
@@ -407,8 +481,9 @@ void CleanRoomLayer::itemDidMoved(MovableItem *pItem, cocos2d::CCPoint detla) {
         case kRagToolTags:
         {
             
-            if (dustonWind->boundingBox().containsPoint(pItem->getPosition())) {
+            if (dustonWind->boundingBox().containsPoint(pItem->getPosition()) && _winState == kDirty) {
 //                this->ItemDidBackToStartLocation(pItem);
+                pItem->setTouchable(false);
                 GameController::getInstance()->gotoRoomWindow(this);
             }
         }
@@ -434,4 +509,12 @@ void CleanRoomLayer::setWindowStatues(WindowStatues state) {
 
 void CleanRoomLayer::setMuralsStatues(MuralsStatues state) {
     _muralState = state;
+}
+
+void CleanRoomLayer::checkisDone(){
+    doneCount = doneCount + 1;
+    if (doneCount >= 6) {
+        WellDoneLayer* layer = WellDoneLayer::createWithBoolen(true);
+        layer->showINtheNode(this);
+    }
 }

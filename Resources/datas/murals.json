@@ -1,16 +1,16 @@
 {
 	"items":[
 		{
-			"deltaPoint":"{30,30}",
-			"deltaRoate":36.0
+			"deltaPoint":"{10,10}",
+			"deltaRoate":30
 		},
 		{
-			"deltaPoint":"{80, -60}",
+			"deltaPoint":"{20,-10}",
 			"deltaRoate":15.0
 		},
 		{
-			"deltaPoint":"{-30,60}",
-			"deltaRoate":-60.0
+			"deltaPoint":"{-30,20}",
+			"deltaRoate":-20.0
 		}
 	]
 }

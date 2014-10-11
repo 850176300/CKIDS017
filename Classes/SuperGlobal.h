@@ -70,6 +70,11 @@ typedef struct DryClothe{
     CCPoint rightPoint;
 }DryClothe;
 
+typedef struct DeltaPositioin {
+    CCPoint deltaPos;
+    float deltaRotate;
+}DeltaPositioin;
+
 #define theLockTagforAll 11111
 
 
@@ -91,6 +96,7 @@ typedef struct DryClothe{
 #define ChooseRoleBGPath "bg/bg_select_figure.jpg"
 #define BabysJsonPath "datas/babys.json"
 #define DryClothePath "datas/dryclothes.json"
+#define DeltaDataPath "datas/murals.json"
 
 
 #pragma mark "House Layer"
@@ -121,6 +127,6 @@ typedef struct DryClothe{
 #pragma mark "cleanRoomLayer"
 #define CleanRoomBGPath "bg/bg_cleaning.jpg"
 #define WindowBGPath "bg/bg_cleaning_window.jpg"
-
+#define PaintBGPath "bg/bg_painting.jpg"
 #endif
 

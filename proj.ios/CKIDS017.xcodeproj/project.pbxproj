@@ -259,6 +259,7 @@
 		01BFBCE619C2921D00C6A097 /* select_game in Resources */ = {isa = PBXBuildFile; fileRef = 01BFBCE019C2921D00C6A097 /* select_game */; };
 		01BFBCE719C2921D00C6A097 /* ui in Resources */ = {isa = PBXBuildFile; fileRef = 01BFBCE119C2921D00C6A097 /* ui */; };
 		01C0917919D2B1C700509A40 /* WashClothes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01C0917719D2B1C700509A40 /* WashClothes.cpp */; };
+		01C6A47D19E91C3A0001F485 /* SortMuralsLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01C6A47B19E91C3A0001F485 /* SortMuralsLayer.cpp */; };
 		01C9A93119C96054003F646F /* TipLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01C9A92F19C96054003F646F /* TipLayer.cpp */; };
 		01D5A68219E6650D0016AC99 /* CleanRoomLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01D5A68019E6650D0016AC99 /* CleanRoomLayer.cpp */; };
 		01D862EC19D274AB00F6D451 /* WellDoneLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01D862EA19D274AA00F6D451 /* WellDoneLayer.cpp */; };
@@ -984,6 +985,8 @@
 		01BFBCE119C2921D00C6A097 /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
 		01C0917719D2B1C700509A40 /* WashClothes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WashClothes.cpp; sourceTree = "<group>"; };
 		01C0917819D2B1C700509A40 /* WashClothes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WashClothes.h; sourceTree = "<group>"; };
+		01C6A47B19E91C3A0001F485 /* SortMuralsLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SortMuralsLayer.cpp; sourceTree = "<group>"; };
+		01C6A47C19E91C3A0001F485 /* SortMuralsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortMuralsLayer.h; sourceTree = "<group>"; };
 		01C9A92F19C96054003F646F /* TipLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TipLayer.cpp; sourceTree = "<group>"; };
 		01C9A93019C96054003F646F /* TipLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipLayer.h; sourceTree = "<group>"; };
 		01D5A68019E6650D0016AC99 /* CleanRoomLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CleanRoomLayer.cpp; sourceTree = "<group>"; };
@@ -2507,6 +2510,8 @@
 				01D5A68119E6650D0016AC99 /* CleanRoomLayer.h */,
 				0121C77619E7CC57008AB375 /* WindowLayer.cpp */,
 				0121C77719E7CC57008AB375 /* WindowLayer.h */,
+				01C6A47B19E91C3A0001F485 /* SortMuralsLayer.cpp */,
+				01C6A47C19E91C3A0001F485 /* SortMuralsLayer.h */,
 			);
 			name = Layers;
 			path = ../Classes/Layers;
@@ -3727,6 +3732,7 @@
 				01AD394919C03CAD00DB0808 /* MPAdWebViewAgent.m in Sources */,
 				15A3DA4C1682F826002FB0C5 /* CCControlHuePicker.cpp in Sources */,
 				375BD50F1868454E0024609E /* CCActionFrame.cpp in Sources */,
+				01C6A47D19E91C3A0001F485 /* SortMuralsLayer.cpp in Sources */,
 				01AD395119C03CAD00DB0808 /* MPLegacyInterstitialCustomEventAdapter.m in Sources */,
 				012F73E119BEF791007D2631 /* CCNSext.cpp in Sources */,
 				15A3DA4D1682F826002FB0C5 /* CCControlPotentiometer.cpp in Sources */,
