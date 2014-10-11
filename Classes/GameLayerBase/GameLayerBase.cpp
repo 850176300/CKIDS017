@@ -79,6 +79,7 @@ void GameLayerBase::setShowAds(bool isShow) {
 }
 void GameLayerBase::onEnter(){
     CCLayer::onEnter();
+    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
     KeypadDispatchCenter::getInstance()->addDelegate(this);
     STAds* ads = new STAds();
     if (isShowAds) {
@@ -162,7 +163,8 @@ void GameLayerBase::showNextBtn(){
     CCLog("=====show the next button===");
     isShowNext = true;
     MyItemSprite* btn = MyItemSprite::menuItems("ui/btn_next.png");
-    btn->setPosition(ccp(-10+STVisibleRect::getPointOfSceneRightUp().x-btn->getContentSize().width/2.0, STVisibleRect::getCenterOfScene().y));
+    btn->setAnchorPoint(ccp(0.5f, 0));
+    btn->setPosition(ccp(-10+STVisibleRect::getPointOfSceneRightUp().x-btn->getContentSize().width/2.0, STVisibleRect::getPointOfSceneRightBottom().y+15));
     btn->setTarget(this, menu_selector(GameLayerBase::onNextBtnClicked));
     
     SMMenu* menu = SMMenu::create(btn, NULL);
@@ -171,8 +173,8 @@ void GameLayerBase::showNextBtn(){
     menu->setTag(kBaseNextBtn);
     addChild(menu, 200);
     menu->setTouchPriority(-130);
-    CCSequence* sequence = CCSequence::create(CCScaleTo::create(0.2f, 0.9f), CCScaleTo::create(0.2f, 1.0f), NULL);
-    btn->runAction(CCRepeatForever::create(sequence));
+//    CCSequence* sequence = CCSequence::create(CCScaleTo::create(0.2f, 0.9f), CCScaleTo::create(0.2f, 1.0f), NULL);
+//    btn->runAction(CCRepeatForever::create(sequence));
     
 }
 

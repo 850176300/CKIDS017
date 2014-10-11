@@ -187,8 +187,8 @@ void GameController::gotoCleanRoom(bool reset) {
     }
 }
 
-void GameController::gotoRoomWindow(){
-    CCScene* pScene = WindowLayer::scene();
+void GameController::gotoRoomWindow(cocos2d::CCObject *pObj){
+    CCScene* pScene = WindowLayer::scene(pObj);
     CCTransitionScene* transition = CCTransitionMoveInR::create(0.5f, pScene);
     CCDirector::sharedDirector()->pushScene(transition);
 }

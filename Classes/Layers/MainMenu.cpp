@@ -82,7 +82,7 @@ bool MainMenu::init(){
 
 void MainMenu::onEnter(){
     GameLayerBase::onEnter();
-    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+//    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
 }
 
 void MainMenu::onExit(){

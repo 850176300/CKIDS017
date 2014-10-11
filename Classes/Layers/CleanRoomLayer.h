@@ -24,6 +24,18 @@ enum CleanRoomLayerTags{
     kMopToolTags,//拖把
 };
 
+enum WindowStatues{
+    kDirty = 41,
+    kClean,
+    kCleaned,
+};
+
+enum MuralsStatues{
+    kRandom = 411,
+    kSort,
+    kSorted,
+};
+
 class CleanRoomLayer : public GameLayerBase, public MovableItemDelegate{
 public:
     CleanRoomLayer(){_scribble = NULL;};
@@ -31,10 +43,15 @@ public:
     static CCScene* scene();
     virtual bool init();
     CREATE_FUNC(CleanRoomLayer);
+    void setWindowStatues(WindowStatues state);
+    void setMuralsStatues(MuralsStatues state);
     virtual void itemTouchDidBegan(ItemBase* pItem, CCTouch *pTouch);
     virtual void ItemDidBackToStartLocation(MovableItem* pItem);
     virtual void itemDidMoved(MovableItem* pItem, CCPoint detla);
+    virtual void onEnter();
 private:
+    WindowStatues _winState;
+    MuralsStatues _muralState;
     Scribble*  _scribble;//涂抹功能的图案
     void showtoolLayer(MovableItem* pItem);
     /*添加所有的工具**/
@@ -66,6 +83,11 @@ private:
     void addModItems();//添加拖把清除物品
     /*窗户的污渍**/
     CCSprite* dustonWind;
+    /*位置错乱的壁画**/
+    void addAllMurals();//添加所有壁画
+    
     void addWindowDust();
+
+    
 };
 #endif /* defined(__CKIDS017__CleanRoomLayer__) */

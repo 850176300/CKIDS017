@@ -46,7 +46,7 @@ public:
     void gotoWashClothes(bool reset = false);
     void gotoDryClothes(bool reset = false);
     void gotoCleanRoom(bool reset = false);
-    void gotoRoomWindow();
+    void gotoRoomWindow(CCObject* pObj);
 };
 
 #endif /* defined(__BBQParty__GameController__) */

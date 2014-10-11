@@ -65,7 +65,7 @@ void HouseLayer::addHouse(){
 
 void HouseLayer::onEnter(){
     GameLayerBase::onEnter();
-    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+//    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
 }
 
 void HouseLayer::onExit(){

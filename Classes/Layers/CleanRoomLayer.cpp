@@ -22,6 +22,8 @@ CCScene* CleanRoomLayer::scene(){
 
 bool CleanRoomLayer::init(){
     if (GameLayerBase::initWithBgFileName(CleanRoomBGPath)) {
+        _muralState = kRandom;
+        _winState = kDirty;
         addallDust();
         addAlltools();
         addCleanerDust();
@@ -32,6 +34,23 @@ bool CleanRoomLayer::init(){
     }
     return false;
 }
+
+void CleanRoomLayer::onEnter(){
+    GameLayerBase::onEnter();
+    if (_winState == kClean) {
+        _winState = kCleaned;
+        if (dustonWind) {
+            dustonWind->removeFromParent();
+            dustonWind = NULL;
+        }
+        if (this->getChildByTag(kRagToolTags)) {
+            MovableItem* pItem = dynamic_cast<MovableItem*>(this->getChildByTag(kRagToolTags));
+            this->ItemDidBackToStartLocation(pItem);
+        }
+    }
+}
+
+
 
 void CleanRoomLayer::addAlltools(){
     string toolStrs[5] = {"cleaning/tool/dusting.png","cleaning/tool/cleaner.png","cleaning/tool/atomizing.png","cleaning/tool/besom.png","cleaning/tool/mop.png"};
@@ -242,6 +261,16 @@ void CleanRoomLayer::showtoolLayer(MovableItem *pItem) {
             }
         }
             break;
+        case kRagToolTags:
+        {
+            if (_winState == kCleaned) {
+                pItem->setTouchable(false);
+                CCSprite* draw = CCSprite::create("ui/prompt/draw.png");
+                draw->setPosition(ccp(pItem->getContentSize().width/2.0, pItem->getContentSize().height/2.0));
+                pItem->addChild(draw);
+            }
+        }
+            break;
         default:
             break;
     }
@@ -379,8 +408,8 @@ void CleanRoomLayer::itemDidMoved(MovableItem *pItem, cocos2d::CCPoint detla) {
         {
             
             if (dustonWind->boundingBox().containsPoint(pItem->getPosition())) {
-                this->ItemDidBackToStartLocation(pItem);
-                GameController::getInstance()->gotoRoomWindow();
+//                this->ItemDidBackToStartLocation(pItem);
+                GameController::getInstance()->gotoRoomWindow(this);
             }
         }
             break;
@@ -399,3 +428,10 @@ void CleanRoomLayer::itemTouchDidBegan(ItemBase *pItem, cocos2d::CCTouch *pTouch
 
 }
 
+void CleanRoomLayer::setWindowStatues(WindowStatues state) {
+    _winState = state;
+}
+
+void CleanRoomLayer::setMuralsStatues(MuralsStatues state) {
+    _muralState = state;
+}

@@ -90,7 +90,7 @@ void PlantingLayer::addBaby(){
 
 void PlantingLayer::onEnter(){
     GameLayerBase::onEnter();
-    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+//    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
 }
 
 void PlantingLayer::onEnterTransitionDidFinish(){

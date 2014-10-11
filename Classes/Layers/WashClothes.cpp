@@ -36,7 +36,7 @@ bool WashClothes::init(){
 }
 
 void WashClothes::onEnter(){
-    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+//    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
     GameLayerBase::onEnter();
 }
 

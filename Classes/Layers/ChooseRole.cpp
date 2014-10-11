@@ -79,7 +79,7 @@ void ChooseRole::onBabyClicked(int index) {
 
 void ChooseRole::onEnter(){
     GameLayerBase::onEnter();
-    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+//    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
 }
 
 void ChooseRole::onEnterTransitionDidFinish(){
