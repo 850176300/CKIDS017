@@ -10,24 +10,36 @@
 	<string>CKIDS017</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>296BC955287D85E8E0AECDABB47FF26F80197E68</key>
+		<string>https://github.com/850176300/CKIDS017.git</string>
 		<key>40791DE8-ECF3-4553-A21C-AD0786D346BE</key>
 		<string>https://github.com/850176300/CKIDS017.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>proj.ios/CKIDS017.xcodeproj/project.xcworkspace</string>
+	<string>proj.ios/CKIDS017.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>40791DE8-ECF3-4553-A21C-AD0786D346BE</key>
+		<key>296BC955287D85E8E0AECDABB47FF26F80197E68</key>
 		<string>../../..</string>
+		<key>40791DE8-ECF3-4553-A21C-AD0786D346BE</key>
+		<string>../../../../CKIDS017_GIT</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/850176300/CKIDS017.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>40791DE8-ECF3-4553-A21C-AD0786D346BE</string>
+	<string>296BC955287D85E8E0AECDABB47FF26F80197E68</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>296BC955287D85E8E0AECDABB47FF26F80197E68</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CKIDS017</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

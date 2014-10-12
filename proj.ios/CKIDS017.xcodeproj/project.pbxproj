@@ -72,6 +72,7 @@
 		0134BEEE19C0494B00923C52 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0134BEED19C0494B00923C52 /* MessageUI.framework */; };
 		019AC58B19CA95B400C2540C /* particles in Resources */ = {isa = PBXBuildFile; fileRef = 019AC58A19CA95B400C2540C /* particles */; };
 		019AC58F19CAEB7300C2540C /* Insects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 019AC58D19CAEB7300C2540C /* Insects.cpp */; };
+		01A2991E19EA6C8400357039 /* SortRoomLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01A2991C19EA6C8400357039 /* SortRoomLayer.cpp */; };
 		01AD379719C03C2000DB0808 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 01AD376319C03C2000DB0808 /* sqlite3.c */; };
 		01AD379819C03C2000DB0808 /* CCShake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01AD376719C03C2000DB0808 /* CCShake.cpp */; };
 		01AD379A19C03C2000DB0808 /* CocosHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01AD376B19C03C2000DB0808 /* CocosHelper.cpp */; };
@@ -599,6 +600,8 @@
 		019AC58A19CA95B400C2540C /* particles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particles; sourceTree = "<group>"; };
 		019AC58D19CAEB7300C2540C /* Insects.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Insects.cpp; sourceTree = "<group>"; };
 		019AC58E19CAEB7300C2540C /* Insects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insects.h; sourceTree = "<group>"; };
+		01A2991C19EA6C8400357039 /* SortRoomLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SortRoomLayer.cpp; sourceTree = "<group>"; };
+		01A2991D19EA6C8400357039 /* SortRoomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortRoomLayer.h; sourceTree = "<group>"; };
 		01AD376319C03C2000DB0808 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
 		01AD376419C03C2000DB0808 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		01AD376519C03C2000DB0808 /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
@@ -2512,6 +2515,8 @@
 				0121C77719E7CC57008AB375 /* WindowLayer.h */,
 				01C6A47B19E91C3A0001F485 /* SortMuralsLayer.cpp */,
 				01C6A47C19E91C3A0001F485 /* SortMuralsLayer.h */,
+				01A2991C19EA6C8400357039 /* SortRoomLayer.cpp */,
+				01A2991D19EA6C8400357039 /* SortRoomLayer.h */,
 			);
 			name = Layers;
 			path = ../Classes/Layers;
@@ -3616,6 +3621,7 @@
 				0121C77819E7CC57008AB375 /* WindowLayer.cpp in Sources */,
 				15A3D91B1682F7D5002FB0C5 /* b2ContactSolver.cpp in Sources */,
 				01AD393319C03CAD00DB0808 /* CJSONScanner.m in Sources */,
+				01A2991E19EA6C8400357039 /* SortRoomLayer.cpp in Sources */,
 				012F73ED19BEF791007D2631 /* MyDialog.cpp in Sources */,
 				15A3D91C1682F7D5002FB0C5 /* b2EdgeAndCircleContact.cpp in Sources */,
 				01AD396919C03CAD00DB0808 /* MPGlobal.m in Sources */,

@@ -128,5 +128,9 @@ typedef struct DeltaPositioin {
 #define CleanRoomBGPath "bg/bg_cleaning.jpg"
 #define WindowBGPath "bg/bg_cleaning_window.jpg"
 #define PaintBGPath "bg/bg_painting.jpg"
+
+#pragma mark "SortRoom Layer"
+#define SortRoomLayerPath "sorting/room/bg_room.jpg"
+
 #endif
 

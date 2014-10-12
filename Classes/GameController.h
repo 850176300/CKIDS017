@@ -48,6 +48,7 @@ public:
     void gotoCleanRoom(bool reset = false);
     void gotoRoomWindow(CCObject* pObj);
     void gotoRoomMurals(CCObject* pObj);
+    void gotoSortRoom(bool reset = false);
 };
 
 #endif /* defined(__BBQParty__GameController__) */

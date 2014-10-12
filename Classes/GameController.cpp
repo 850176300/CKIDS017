@@ -17,6 +17,7 @@
 #include "CleanRoomLayer.h"
 #include "WindowLayer.h"
 #include "SortMuralsLayer.h"
+#include "SortRoomLayer.h"
 
 GameController::GameController(){
     chooseIndex = kGirlOne;
@@ -199,4 +200,26 @@ void GameController::gotoRoomMurals(cocos2d::CCObject *pObj) {
     CCScene* pScene = SortMuralsLayer::scene(pObj);
     CCTransitionScene* transition = CCTransitionMoveInR::create(0.5f, pScene);
     CCDirector::sharedDirector()->pushScene(transition);
+}
+
+
+void GameController::gotoSortRoom(bool reset){
+    CCScene* pScene = SortRoomLayer::scene();
+    if (reset == true) {
+        if( CCDirector::sharedDirector()->getRunningScene() ){
+            CCDirector::sharedDirector()->replaceScene(pScene);
+        }
+        else{
+            CCDirector::sharedDirector()->runWithScene(pScene);
+        }
+    }else {
+        CCTransitionScene* transition = CCTransitionMoveInR::create(0.5f, pScene);
+        if( CCDirector::sharedDirector()->getRunningScene() )
+        {
+            CCDirector::sharedDirector()->replaceScene(transition);
+        }
+        else{
+            CCDirector::sharedDirector()->runWithScene(transition);
+        }
+    }
 }
