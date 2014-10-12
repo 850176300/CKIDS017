@@ -476,6 +476,7 @@ void CleanRoomLayer::itemDidMoved(MovableItem *pItem, cocos2d::CCPoint detla) {
                 water2->setOpacity(opacity);
                 water2->setScale(scale);
             }
+
         }
             break;
         case kRagToolTags:
