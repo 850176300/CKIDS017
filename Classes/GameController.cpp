@@ -18,7 +18,7 @@
 #include "WindowLayer.h"
 #include "SortMuralsLayer.h"
 #include "SortRoomLayer.h"
-
+#include "JumpPandaLayer.h"
 GameController::GameController(){
     chooseIndex = kGirlOne;
     isRemovedAD = CCUserDefault::sharedUserDefault()->getBoolForKey("isRemovedAD", false);
@@ -223,3 +223,14 @@ void GameController::gotoSortRoom(bool reset){
         }
     }
 }
+
+void GameController::gotoJumpLayer(){
+    CCScene* pScene = JumpPanda::scene();
+    CCTransitionScene* transition = CCTransitionMoveInR::create(0.5f, pScene);
+    CCDirector::sharedDirector()->pushScene(transition);
+}
+
+
+
+
+

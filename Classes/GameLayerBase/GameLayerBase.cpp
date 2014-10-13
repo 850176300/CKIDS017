@@ -83,6 +83,7 @@ void GameLayerBase::onEnter(){
     KeypadDispatchCenter::getInstance()->addDelegate(this);
     STAds* ads = new STAds();
     if (isShowAds) {
+        showHomeBtn();
         if (!GameController::getInstance()->isRemoveADS()) {
             CCLog("show banner ============= %s", __FUNCTION__);
             ads->requestAds();
@@ -120,7 +121,7 @@ void GameLayerBase::showBackBtn(){
 
 void GameLayerBase::showHomeBtn(){
     if (isShowHome) {
-        hiddenHomeBtn(true);
+//        hiddenHomeBtn(true);
         return;
     }
     isShowHome = true;

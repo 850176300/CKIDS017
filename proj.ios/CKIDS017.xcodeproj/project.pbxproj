@@ -70,6 +70,8 @@
 		0134BEEA19C048D000923C52 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0134BEE919C048CF00923C52 /* iAd.framework */; };
 		0134BEEC19C048E200923C52 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0134BEEB19C048E200923C52 /* SystemConfiguration.framework */; };
 		0134BEEE19C0494B00923C52 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0134BEED19C0494B00923C52 /* MessageUI.framework */; };
+		016B41AE19EB5F0F00E91597 /* JumpPandaLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 016B41AC19EB5F0F00E91597 /* JumpPandaLayer.cpp */; };
+		016B41B019EB6E0500E91597 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 016B41AF19EB6E0500E91597 /* fonts */; };
 		019AC58B19CA95B400C2540C /* particles in Resources */ = {isa = PBXBuildFile; fileRef = 019AC58A19CA95B400C2540C /* particles */; };
 		019AC58F19CAEB7300C2540C /* Insects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 019AC58D19CAEB7300C2540C /* Insects.cpp */; };
 		01A2991E19EA6C8400357039 /* SortRoomLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01A2991C19EA6C8400357039 /* SortRoomLayer.cpp */; };
@@ -597,6 +599,9 @@
 		0134BEE919C048CF00923C52 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		0134BEEB19C048E200923C52 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0134BEED19C0494B00923C52 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		016B41AC19EB5F0F00E91597 /* JumpPandaLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JumpPandaLayer.cpp; sourceTree = "<group>"; };
+		016B41AD19EB5F0F00E91597 /* JumpPandaLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpPandaLayer.h; sourceTree = "<group>"; };
+		016B41AF19EB6E0500E91597 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		019AC58A19CA95B400C2540C /* particles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particles; sourceTree = "<group>"; };
 		019AC58D19CAEB7300C2540C /* Insects.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Insects.cpp; sourceTree = "<group>"; };
 		019AC58E19CAEB7300C2540C /* Insects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insects.h; sourceTree = "<group>"; };
@@ -2517,6 +2522,8 @@
 				01C6A47C19E91C3A0001F485 /* SortMuralsLayer.h */,
 				01A2991C19EA6C8400357039 /* SortRoomLayer.cpp */,
 				01A2991D19EA6C8400357039 /* SortRoomLayer.h */,
+				016B41AC19EB5F0F00E91597 /* JumpPandaLayer.cpp */,
+				016B41AD19EB5F0F00E91597 /* JumpPandaLayer.h */,
 			);
 			name = Layers;
 			path = ../Classes/Layers;
@@ -3409,6 +3416,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				016B41AF19EB6E0500E91597 /* fonts */,
 				019AC58A19CA95B400C2540C /* particles */,
 				0113F80219C7DC8400E577E8 /* burshes */,
 				01AFA37919C6DB3100DBB9D0 /* washing_clothes */,
@@ -3500,6 +3508,7 @@
 				01AD393519C03CAD00DB0808 /* LICENSE.txt in Resources */,
 				01AD399B19C03CAD00DB0808 /* close_crazykidsmedia@2x.png in Resources */,
 				01AFA37719C6DA6900DBB9D0 /* washing_cars in Resources */,
+				016B41B019EB6E0500E91597 /* fonts in Resources */,
 				01AD393E19C03CAD00DB0808 /* MPAdBrowserController.xib in Resources */,
 				01AD399A19C03CAD00DB0808 /* close_crazykidsmedia.png in Resources */,
 				01BFBCE619C2921D00C6A097 /* select_game in Resources */,
@@ -3620,6 +3629,7 @@
 				01F0508419CC235F00C7DE88 /* SunSprite.cpp in Sources */,
 				0121C77819E7CC57008AB375 /* WindowLayer.cpp in Sources */,
 				15A3D91B1682F7D5002FB0C5 /* b2ContactSolver.cpp in Sources */,
+				016B41AE19EB5F0F00E91597 /* JumpPandaLayer.cpp in Sources */,
 				01AD393319C03CAD00DB0808 /* CJSONScanner.m in Sources */,
 				01A2991E19EA6C8400357039 /* SortRoomLayer.cpp in Sources */,
 				012F73ED19BEF791007D2631 /* MyDialog.cpp in Sources */,

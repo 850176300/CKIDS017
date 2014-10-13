@@ -105,7 +105,7 @@ void SortRoomLayer::onSortItemsClicked(cocos2d::CCObject *pObj) {
             break;
         case kPandaTags:
         {
-            
+            GameController::getInstance()->gotoJumpLayer();
         }
             break;
         default:

@@ -49,6 +49,7 @@ public:
     void gotoRoomWindow(CCObject* pObj);
     void gotoRoomMurals(CCObject* pObj);
     void gotoSortRoom(bool reset = false);
+    void gotoJumpLayer();
 };
 
 #endif /* defined(__BBQParty__GameController__) */

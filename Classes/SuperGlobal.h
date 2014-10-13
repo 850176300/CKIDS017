@@ -131,6 +131,6 @@ typedef struct DeltaPositioin {
 
 #pragma mark "SortRoom Layer"
 #define SortRoomLayerPath "sorting/room/bg_room.jpg"
-
+#define JumpBGPath "sorting/jump/bg_jump.jpg"
 #endif
 
