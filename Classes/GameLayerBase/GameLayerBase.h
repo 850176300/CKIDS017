@@ -21,7 +21,9 @@
 #include "GameController.h"
 #include "STAds.h"
 #include "STSystemFunction.h"
+#include "WellDoneLayer.h"
 #define kNoticeOnShopUpdate "ShopUpdateEvents"
+
 USING_NS_ST;
 enum
 {
@@ -49,7 +51,7 @@ enum GameLayerBaseTags{
  1. 有可折叠的公共按钮(reset, home, music)；
  2. 有一居中放置的背景图片
  */
-class GameLayerBase: public CCLayer, public KeypadDelegate
+class GameLayerBase: public CCLayer, public KeypadDelegate, public WellDoneLayerDelegate
 {
 public:
     GameLayerBase();
@@ -59,6 +61,8 @@ public:
     virtual bool initWithBgFileName(const char* apFileName, bool showAds = true);
     virtual void onEnter();
     virtual void onExit();
+    virtual void onLeftButtonClicked(TapType type);
+    virtual void onResetButtonClicked();
     virtual void onNextBtnClicked();
     virtual void onBackBtnClicked();
     virtual void onHomeBtnClicked();
@@ -84,6 +88,7 @@ public:
 //    virtual void onShopUpdate();
     virtual void keyBackClicked();
     void setShowAds(bool isShow);
+    virtual void onRestartClick();//当重新开始按钮点击过后
 public:
     CCSprite* m_pBg;
     

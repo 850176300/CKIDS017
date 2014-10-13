@@ -9,7 +9,6 @@
 #include "JumpPandaLayer.h"
 #include "TipLayer.h"
 
-
 CCScene* JumpPanda::scene() {
     CCScene* scene = CCScene::create();
     
@@ -89,8 +88,11 @@ void JumpPanda::updatePos(float dt) {
     float speedx = speed * tan(angle * M_PI / 180.0);
     panda->setPosition(panda->getPosition() + ccp(speedx*1/30.0, speed*1/30.0));
     if (speed > 0 && panda->getPositionY() > STVisibleRect::getPointOfSceneLeftUp().y + 10) {
+        srand((unsigned)time(0));
+        angle = rand() % 61 - 30;
+        panda->setRotation(angle);
         panda->setPositionY(STVisibleRect::getPointOfSceneLeftUp().y + 10);
-        speed = -150;
+        speed = -300;
     }
     speed = speed - 150*dt;
     CCRect pandaRect;
@@ -98,15 +100,16 @@ void JumpPanda::updatePos(float dt) {
     pandaRect.size = CCSizeMake(286, 164);
     if (pandaRect.containsPoint(panda->getPosition() + ccp(0, -panda->getContentSize().height/2.0)) && speed < 0) {
         speed = -1 * speed;
-        srand((unsigned)time(0));
-        angle = rand() % 61 - 30;
-        panda->setRotation(angle);
+        
         jumpItem->setTexture(CCSprite::create("sorting/jump/jump_2.png")->getTexture());
         runAction(CCSequence::create(CCDelayTime::create(0.2f), CCCallFuncO::create(jumpItem, callfuncO_selector(CCSprite::setTexture), CCSprite::create("sorting/jump/jump_1.png")->getTexture()), NULL));
     }else {
         if (panda->getPositionY() - fabs(panda->getContentSize().width * tan(angle * M_PI / 180.0))*0.5f < jumpItem->getPositionY() - 300) {
             //gameover。
             unschedule(schedule_selector(JumpPanda::updatePos));
+            WellDoneLayer* layer = WellDoneLayer::createWithBoolen(false);
+            layer->setDelegate(this);
+            layer->showINtheNode(this);
         }
     }
     ++timerCount;
@@ -117,8 +120,35 @@ void JumpPanda::updatePos(float dt) {
         timerLabel->setLabelString(time);
         timerCount = 0;
     }
+    if (currentTimer == 0) {
+        unschedule(schedule_selector(JumpPanda::updatePos));
+        WellDoneLayer* layer = WellDoneLayer::createWithBoolen(true);
+        layer->setDelegate(this);
+        layer->showINtheNode(this);
+    }
 }
 
+void JumpPanda::resetTheGame(){
+    panda->setPosition(STVisibleRect::getCenterOfScene() + ccp(0, STVisibleRect::getGlvisibleSize().height / 2.0 + 50));
+    speed = -100;
+    angle = 15;
+    currentTimer = 30;
+    timerCount = 0;
+    jumpItem->setPosition(STVisibleRect::getCenterOfScene()+ccp(0, -50));
+    timerLabel->setLabelString("00:30");
+    schedule(schedule_selector(JumpPanda::updatePos), 1/30.0, kCCRepeatForever, 0.5f);
+}
+
+#pragma mark welldonelayer delegate
+void JumpPanda::onResetButtonClicked(){
+    GameLayerBase::onResetBtnClicked();
+    resetTheGame();
+}
+void JumpPanda::onRestartClick(){
+    GameLayerBase::onRestartClick();
+    resetTheGame();
+    
+}
 
 #pragma mark 描边字体
 LabelFx*  LabelFx::createShaderLabel(const char *string, const char *fontName, float fontSize, const ccColor3B &color3, ccColor3B &shadercolor, float lineWidth)
@@ -182,3 +212,5 @@ void LabelFx::setLabelString(const char *string) {
     left->setPosition(ccp(getContentSize().width*0.5-lineWidth, getContentSize().height*0.5));
     right->setPosition(ccp(getContentSize().width*0.5+lineWidth,getContentSize().height*0.5));
 }
+
+

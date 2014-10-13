@@ -9,7 +9,7 @@
 #include "WashClothes.h"
 #include "Baby.h"
 #include "TipLayer.h"
-#include "WellDoneLayer.h"
+
 CCScene* WashClothes::scene(){
     CCScene* scene = CCScene::create();
     
@@ -579,6 +579,7 @@ void WashClothes::playWellDone(){
 
 void WashClothes::showWellDoneLayer(){
     WellDoneLayer* doneLayer = WellDoneLayer::createWithBoolen(true);
+    doneLayer->setDelegate(this);
     doneLayer->showINtheNode(this);
 }
 

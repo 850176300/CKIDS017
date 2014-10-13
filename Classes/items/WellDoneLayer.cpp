@@ -100,6 +100,7 @@ void WellDoneLayer::onLeftBtnClicked(){
             theDelegate->onLeftButtonClicked(kHomeType);
         }else {
             theDelegate->onLeftButtonClicked(kRestartType);
+            removeFromParent();
         }
     }
 }
@@ -107,6 +108,7 @@ void WellDoneLayer::onLeftBtnClicked(){
 void WellDoneLayer::onResetBtnClicked(){
     if (theDelegate) {
         theDelegate->onResetButtonClicked();
+        removeFromParent();
     }
 }
 

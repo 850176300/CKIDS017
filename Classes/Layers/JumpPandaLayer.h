@@ -13,6 +13,7 @@
 #include "cocos2d.h"
 #include "GameLayerBase.h"
 #include "MovableItem.h"
+
 USING_NS_CC;
 class LabelFx : public CCLabelTTF{
 public:
@@ -34,11 +35,14 @@ public:
     virtual void onEnterTransitionDidFinish();
     virtual void onNextBtnClicked();
     virtual void itemDidMoved(MovableItem* pItem, CCPoint detla);
+    virtual void onResetButtonClicked();
+    virtual void onRestartClick();
 private:
     CCSprite* panda;//熊猫
     MovableItem* jumpItem;//移动的平台来接熊猫
     LabelFx* timerLabel;
     void showTip();
+    void resetTheGame();
     void updatePos(float dt);
     //熊猫下落时候的速度和角度定义
     float speed;

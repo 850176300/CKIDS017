@@ -10,7 +10,7 @@
 #include "DragItemLayer.h"
 #include "Scribble.h"
 #include "DataContainer.h"
-#include "WellDoneLayer.h"
+
 #include "TipLayer.h"
 CCScene* CleanRoomLayer::scene(){
     CCScene* scene = CCScene::create();
@@ -516,6 +516,7 @@ void CleanRoomLayer::checkisDone(){
     doneCount = doneCount + 1;
     if (doneCount >= 6) {
         WellDoneLayer* layer = WellDoneLayer::createWithBoolen(true);
+        layer->setDelegate(this);
         layer->showINtheNode(this);
     }
 }

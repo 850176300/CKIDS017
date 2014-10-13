@@ -15,7 +15,7 @@
 #include "Field.h"
 #include "MovableItem.h"
 #include "SnailLayer.h"
-#include "WellDoneLayer.h"
+
 USING_NS_CC;
 
 enum PlantingLayerTags{
@@ -50,7 +50,7 @@ enum PlantingLayerStates{
     kWatering,
     kWellDone,
 };
-class PlantingLayer : public GameLayerBase , public FieldDelegate, public MovableItemDelegate, public WellDoneLayerDelegate{
+class PlantingLayer : public GameLayerBase , public FieldDelegate, public MovableItemDelegate{
 public:
     static CCScene* scene();
     virtual bool init();
@@ -69,7 +69,6 @@ public:
     virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
-    virtual void onLeftButtonClicked(TapType type);
     virtual void onResetButtonClicked();
 private:
     Field* leftField;

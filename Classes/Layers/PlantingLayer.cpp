@@ -881,6 +881,7 @@ void PlantingLayer::addKettleLast(){
 //完成效果添加
 void PlantingLayer::showWellDone(){
     WellDoneLayer* layer = WellDoneLayer::createWithBoolen(true);
+    layer->setDelegate(this);
     layer->showINtheNode(this);
 }
 
@@ -1145,13 +1146,6 @@ void PlantingLayer::thePlantSeedField(cocos2d::CCPoint afterPP) {
 }
 
 #pragma welldone layer delegate
-void PlantingLayer::onLeftButtonClicked(TapType type) {
-    if (type == kHomeType) {
-        
-    }else {
-        
-    }
-}
 
 void PlantingLayer::onResetButtonClicked(){
     GameController::getInstance()->gotoPlanting(true);

@@ -330,7 +330,21 @@ bool GameLayerBase::isNextBenHasBeenShow(){
     return isShowNext;
 }
 
+void GameLayerBase::onResetButtonClicked(){
+    CCLog("gameLayerBase::onResetButtonClicked");
+}
 
+void GameLayerBase::onLeftButtonClicked(TapType type) {
+    if (type == kHomeType) {
+        
+    }else {
+        onRestartClick();
+    }
+}
+
+void GameLayerBase::onRestartClick(){
+    CCLog("gameLayerBase::onRestartClick");
+}
 
 
 //void GameLayerBase::onShopUpdate() {

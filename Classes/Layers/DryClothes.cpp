@@ -10,7 +10,7 @@
 #include "DataContainer.h"
 #include "CocosHelper.h"
 #include "TipLayer.h"
-#include "WellDoneLayer.h"
+
 
 CCScene* DryClothes::scene(){
     CCScene* scene = CCScene::create();
@@ -131,6 +131,7 @@ void DryClothes::ItemDidBackToStartLocation(MovableItem *pItem) {
 
 void DryClothes::showWellDone(){
     WellDoneLayer* welllayer = WellDoneLayer::createWithBoolen(true);
+    welllayer->setDelegate(this);
     welllayer->showINtheNode(this);
 }
 
