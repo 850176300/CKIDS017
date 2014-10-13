@@ -1,0 +1,29 @@
+{
+	"items":[
+		{
+			"item":"car.png",
+			"isFree":true
+		},
+		{
+			"item":"jeep.png",
+			"isFree":true
+		},
+		{
+			"item":"police.png",
+			"isFree":true
+		},
+		{
+			"item":"sports_car_1.png",
+			"isFree":false
+		},
+		{
+			"item":"sports_car_2.png",
+			"isFree":false
+		},
+		{
+			"item":"truck.png",
+			"isFree":false
+		}
+		
+	]
+}

@@ -99,7 +99,7 @@ void JumpPanda::updatePos(float dt) {
     pandaRect.origin = jumpItem->getPosition() + ccp(-jumpItem->getContentSize().width / 2.0+50, -350);
     pandaRect.size = CCSizeMake(286, 164);
     if (pandaRect.containsPoint(panda->getPosition() + ccp(0, -panda->getContentSize().height/2.0)) && speed < 0) {
-        speed = -1 * speed;
+        speed = -2 * speed;
         
         jumpItem->setTexture(CCSprite::create("sorting/jump/jump_2.png")->getTexture());
         runAction(CCSequence::create(CCDelayTime::create(0.2f), CCCallFuncO::create(jumpItem, callfuncO_selector(CCSprite::setTexture), CCSprite::create("sorting/jump/jump_1.png")->getTexture()), NULL));

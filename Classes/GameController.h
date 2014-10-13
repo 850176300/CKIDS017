@@ -50,6 +50,8 @@ public:
     void gotoRoomMurals(CCObject* pObj);
     void gotoSortRoom(bool reset = false);
     void gotoJumpLayer();
+    void gotoSortToys(CCObject* pObj);
+    void gotoSelectCar();
 };
 
 #endif /* defined(__BBQParty__GameController__) */

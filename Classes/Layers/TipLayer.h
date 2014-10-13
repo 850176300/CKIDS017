@@ -21,6 +21,7 @@ public:
     static TipLayer* createWithNode(CCNode* pNode);
     bool initWithTipNode(CCNode* pNode);
     virtual void onEnter();
+    virtual void onExit();
     void addToNode(CCNode* parent);
     void removeFromNode();
     virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);

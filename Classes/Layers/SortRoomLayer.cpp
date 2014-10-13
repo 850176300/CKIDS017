@@ -21,17 +21,36 @@ CCScene* SortRoomLayer::scene(){
 
 bool SortRoomLayer::init(){
     if (GameLayerBase::initWithBgFileName(SortRoomLayerPath)) {
-
+        showShader = false;
+        theOrder = kRandom;
         CCSprite* carpet = CCSprite::create("sorting/room/carpet.png");
         carpet->setPosition(m_pBg->convertToWorldSpace(ccp(433, 193.5)));
         carpet->setScale(STVisibleRect::getRealDesignScale());
         addChild(carpet);
         
+        shaderSprite = CCSprite::create("sorting/room/light_open.png");
+        shaderSprite->setScale(STVisibleRect::getRealDesignScale());
+        shaderSprite->setPosition(STVisibleRect::getCenterOfScene());
+        addChild(shaderSprite, 50);
+        shaderSprite->setOpacity(0);
         addAllSortItems();
         return true;
     }
     return false;
 }
+
+void SortRoomLayer::onEnter(){
+    GameLayerBase::onEnter();
+    if (theOrder == kSort) {
+        if (getChildByTag(ktheMenuTags)->getChildByTag(kForcerTags)) {
+            MyItemSprite* item = (MyItemSprite*)(getChildByTag(ktheMenuTags)->getChildByTag(kForcerTags));
+            item->setNormalImage(CCSprite::create("sorting/room/cabinet_2.png"));
+            item->setEnabled(false);
+            theOrder = kSorted;
+        }
+    }
+}
+
 
 void SortRoomLayer::addAllSortItems(){
     /*添加床的点击按钮**/
@@ -55,7 +74,7 @@ void SortRoomLayer::addAllSortItems(){
     addChild(forcer1, 1);
     
     /*添加灯光按钮**/
-    MyItemSprite* light = MyItemSprite::menuItems("sorting/room/button.png");
+    MyItemSprite* light = MyItemSprite::menuItems("sorting/room/button.png", false);
     light->setPosition(m_pBg->convertToWorldSpace(ccp(547, 577)));
     light->setScale(STVisibleRect::getRealDesignScale());
     light->setTag(kLightTags);
@@ -63,7 +82,7 @@ void SortRoomLayer::addAllSortItems(){
     
     
     /*添加跳跳熊**/
-    MyItemSprite* jumpPanda = MyItemSprite::menuItems("sorting/room/jump.png");
+    MyItemSprite* jumpPanda = MyItemSprite::menuItems("sorting/room/jump.png", false);
     jumpPanda->setPosition(STVisibleRect::getPosition(279, 255));
     jumpPanda->setTag(kPandaTags);
     jumpPanda->setTarget(this, menu_selector(SortRoomLayer::onSortItemsClicked));
@@ -74,13 +93,19 @@ void SortRoomLayer::addAllSortItems(){
     light1->setPosition(m_pBg->convertToWorldSpace(ccp(492, 664)));
     light1->setScale(STVisibleRect::getRealDesignScale());
     light1->setTag(kLight1Tags);
-    light1->setTarget(this, menu_selector(SortRoomLayer::onSortItemsClicked));
+    light1->setTarget(this, menu_selector(SortRoomLayer::onLightClicked));
     
     
-    SMMenu* theMenu = SMMenu::create(bed, forcer,light ,light1, jumpPanda,NULL);
+    SMMenu* theMenu = SMMenu::create(bed, forcer,light , jumpPanda,NULL);
+    theMenu->setTag(ktheMenuTags);
     theMenu->setAnchorPoint(ccp(0, 0));
     theMenu->setPosition(ccp(0, 0));
     addChild(theMenu, 2);
+    
+    SMMenu* theMenu2 = SMMenu::create(light1, NULL);
+    theMenu2->setAnchorPoint(ccp(0, 0));
+    theMenu2->setPosition(ccp(0, 0));
+    addChild(theMenu2, 2);
 }
 
 
@@ -95,12 +120,28 @@ void SortRoomLayer::onSortItemsClicked(cocos2d::CCObject *pObj) {
             break;
         case kForcerTags:
         {
-            
+            GameController::getInstance()->gotoSortToys(this);
         }
             break;
         case kLightTags:
         {
-            
+            if (shaderSprite->numberOfRunningActions() != 0) {
+                shaderSprite->stopAllActions();
+            }
+            showShader = !showShader;
+            if (showShader) {
+                if (getChildByTag(ktheMenuTags)) {
+                    SMMenu* menu = (SMMenu*)getChildByTag(ktheMenuTags);
+                    menu->setEnabled(false);
+                }
+                shaderSprite->runAction(CCFadeIn::create(0.3f));
+            }else {
+                if (getChildByTag(ktheMenuTags)) {
+                    SMMenu* menu = (SMMenu*)getChildByTag(ktheMenuTags);
+                    menu->setEnabled(true);
+                }
+                shaderSprite->runAction(CCFadeOut::create(0.2f));
+            }
         }
             break;
         case kPandaTags:
@@ -113,6 +154,24 @@ void SortRoomLayer::onSortItemsClicked(cocos2d::CCObject *pObj) {
     }
 }
 
-
+void SortRoomLayer::onLightClicked(){
+    if (shaderSprite->numberOfRunningActions() != 0) {
+        shaderSprite->stopAllActions();
+    }
+    showShader = !showShader;
+    if (showShader) {
+        if (getChildByTag(ktheMenuTags)) {
+            SMMenu* menu = (SMMenu*)getChildByTag(ktheMenuTags);
+            menu->setEnabled(false);
+        }
+        shaderSprite->runAction(CCFadeIn::create(0.3f));
+    }else {
+        if (getChildByTag(ktheMenuTags)) {
+            SMMenu* menu = (SMMenu*)getChildByTag(ktheMenuTags);
+            menu->setEnabled(true);
+        }
+        shaderSprite->runAction(CCFadeOut::create(0.2f));
+    }
+}
 
 

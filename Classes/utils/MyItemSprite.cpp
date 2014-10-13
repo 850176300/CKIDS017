@@ -30,7 +30,7 @@ void MyItemSprite::setChangeEnabler(bool enabler) {
 }
 void MyItemSprite::activate(){
     CCMenuItem::activate();
-    if (getParent()) {
+    if (getParent() && autoChangeEnabler) {
         ((CCMenu*)getParent())->setEnabled(false);
         this->scheduleOnce(schedule_selector(MyItemSprite::setMenuEnable), 0.5f);
     }

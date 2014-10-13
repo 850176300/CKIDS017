@@ -18,6 +18,8 @@
 #define JSON_CLOTHE_RIGHTP "rightPoint"
 #define JSON_DELTA_POINT "deltaPoint"
 #define JSON_DELTA_ROTATE "deltaRoate"
+#define JSON_TOY_POS1 "pos1"
+#define JSON_TOY_POS2 "pos2"
 
 void DataContainer::loadDatas(){
     LockItem item1 = {"blueberry", true};
@@ -29,6 +31,10 @@ void DataContainer::loadDatas(){
     loadBabys();
     loadDryClothes();
     loadDeltaFiles();
+    loadblocksData();
+    loadcarsData();
+    loaddollsData();
+    loadallcarsDatas();
 }
 
 #pragma mark 加载所有babys的数据
@@ -155,7 +161,7 @@ void DataContainer::loadDryClothes() {
         JSONNode::deleteJSONNode(mainNode);
 		delete[] jsonData;
 	}
-    CCLog("the babys counts is %d", (int)babys.size());
+    CCLog("the dryclothes counts is %d", (int)dryClothes.size());
     //对应getFileData,此接口是要手动清理内存的
 	if(!ret) delete[] ret;
 }
@@ -212,7 +218,7 @@ void DataContainer::loadDeltaFiles(){
         JSONNode::deleteJSONNode(mainNode);
 		delete[] jsonData;
 	}
-    CCLog("the babys counts is %d", (int)babys.size());
+    CCLog("the delta types counts is %d", (int)deltaTypes.size());
     //对应getFileData,此接口是要手动清理内存的
 	if(!ret) delete[] ret;
 }
@@ -236,4 +242,240 @@ DeltaPositioin DataContainer::getdeltaTypeAt(int index) {
     CCAssert(index < 3 && index >= 0, "index 超出了范围，请检测");
     return deltaTypes[index];
 }
+
+#pragma mark 加载所有的toy数据
+void DataContainer::loadblocksData() {
+    unsigned long size;
+	unsigned char* ret = CCFileUtils::sharedFileUtils()->getFileData(BlocksPath, "r", &size);
+	
+	if(ret && size > 0)
+	{
+		char* jsonData = new char[size + 1];
+		for(int i = 0; i < size; i++) jsonData[i] = ret[i];
+		jsonData[size] = '\0';
+        
+        if(!json_is_valid(jsonData)) return;
+        
+        JSONNode* mainNode = (JSONNode*)json_parse(jsonData);
+        if(!mainNode) return;
+        
+        JSONNode::json_iterator itorMain = mainNode->begin();
+        while(itorMain != mainNode->end())
+        {
+            //            if(JSON_KEY_TOOLS == (*itorMain)->name())
+            {
+                JSONNode::json_iterator itorArray = (*itorMain)->begin();
+                while (itorArray != (*itorMain)->end())
+                {
+                    ToyPosition tConfig;
+                    JSONNode::json_iterator itorLevel = (*itorArray)->begin();
+                    while(itorLevel != (*itorArray)->end())
+                    {
+                        if(JSON_TOY_POS1 == (*itorLevel)->name()){
+							string pos = 	(*itorLevel)->as_string();
+                            tConfig.pos1 = CCPointFromString(pos.c_str());
+                        }
+                        else if(JSON_TOY_POS2 == (*itorLevel)->name()){
+							string pos = (*itorLevel)->as_string();
+                            tConfig.pos2 = CCPointFromString(pos.c_str());
+                        }
+                        ++itorLevel;
+                    }
+                    
+                    ++itorArray;
+                    blocksPos.push_back(tConfig);
+                }
+            }
+            ++itorMain;
+        }
+        
+        JSONNode::deleteJSONNode(mainNode);
+		delete[] jsonData;
+	}
+    CCLog("the blocks counts is %d", (int)blocksPos.size());
+    //对应getFileData,此接口是要手动清理内存的
+	if(!ret) delete[] ret;
+}
+
+void DataContainer::loaddollsData() {
+    unsigned long size;
+	unsigned char* ret = CCFileUtils::sharedFileUtils()->getFileData(DollsPath, "r", &size);
+	
+	if(ret && size > 0)
+	{
+		char* jsonData = new char[size + 1];
+		for(int i = 0; i < size; i++) jsonData[i] = ret[i];
+		jsonData[size] = '\0';
+        
+        if(!json_is_valid(jsonData)) return;
+        
+        JSONNode* mainNode = (JSONNode*)json_parse(jsonData);
+        if(!mainNode) return;
+        
+        JSONNode::json_iterator itorMain = mainNode->begin();
+        while(itorMain != mainNode->end())
+        {
+            //            if(JSON_KEY_TOOLS == (*itorMain)->name())
+            {
+                JSONNode::json_iterator itorArray = (*itorMain)->begin();
+                while (itorArray != (*itorMain)->end())
+                {
+                    ToyPosition tConfig;
+                    JSONNode::json_iterator itorLevel = (*itorArray)->begin();
+                    while(itorLevel != (*itorArray)->end())
+                    {
+                        if(JSON_TOY_POS1 == (*itorLevel)->name()){
+							string pos = 	(*itorLevel)->as_string();
+                            tConfig.pos1 = CCPointFromString(pos.c_str());
+                        }
+                        else if(JSON_TOY_POS2 == (*itorLevel)->name()){
+							string pos = (*itorLevel)->as_string();
+                            tConfig.pos2 = CCPointFromString(pos.c_str());
+                        }
+                        ++itorLevel;
+                    }
+                    
+                    ++itorArray;
+                    dollsPos.push_back(tConfig);
+                }
+            }
+            ++itorMain;
+        }
+        
+        JSONNode::deleteJSONNode(mainNode);
+		delete[] jsonData;
+	}
+    CCLog("the dolls counts is %d", (int)dollsPos.size());
+    //对应getFileData,此接口是要手动清理内存的
+	if(!ret) delete[] ret;
+}
+
+void DataContainer::loadcarsData() {
+    unsigned long size;
+	unsigned char* ret = CCFileUtils::sharedFileUtils()->getFileData(CarsPath, "r", &size);
+	
+	if(ret && size > 0)
+	{
+		char* jsonData = new char[size + 1];
+		for(int i = 0; i < size; i++) jsonData[i] = ret[i];
+		jsonData[size] = '\0';
+        
+        if(!json_is_valid(jsonData)) return;
+        
+        JSONNode* mainNode = (JSONNode*)json_parse(jsonData);
+        if(!mainNode) return;
+        
+        JSONNode::json_iterator itorMain = mainNode->begin();
+        while(itorMain != mainNode->end())
+        {
+            //            if(JSON_KEY_TOOLS == (*itorMain)->name())
+            {
+                JSONNode::json_iterator itorArray = (*itorMain)->begin();
+                while (itorArray != (*itorMain)->end())
+                {
+                    ToyPosition tConfig;
+                    JSONNode::json_iterator itorLevel = (*itorArray)->begin();
+                    while(itorLevel != (*itorArray)->end())
+                    {
+                        if(JSON_TOY_POS1 == (*itorLevel)->name()){
+							string pos = 	(*itorLevel)->as_string();
+                            tConfig.pos1 = CCPointFromString(pos.c_str());
+                        }
+                        else if(JSON_TOY_POS2 == (*itorLevel)->name()){
+							string pos = (*itorLevel)->as_string();
+                            tConfig.pos2 = CCPointFromString(pos.c_str());
+                        }
+                        ++itorLevel;
+                    }
+                    
+                    ++itorArray;
+                    carsPos.push_back(tConfig);
+                }
+            }
+            ++itorMain;
+        }
+        
+        JSONNode::deleteJSONNode(mainNode);
+		delete[] jsonData;
+	}
+    CCLog("the cars counts is %d", (int)carsPos.size());
+    //对应getFileData,此接口是要手动清理内存的
+	if(!ret) delete[] ret;
+}
+
+vector<ToyPosition> DataContainer::getBlocks(){
+    return blocksPos;
+}
+
+vector<ToyPosition> DataContainer::getDolls(){
+    return dollsPos;
+}
+
+vector<ToyPosition> DataContainer::getCars() {
+    return carsPos;
+}
+
+#pragma mark "加载卡车信息"
+
+void DataContainer::loadallcarsDatas(){
+    unsigned long size;
+	unsigned char* ret = CCFileUtils::sharedFileUtils()->getFileData(CarFilePath, "r", &size);
+	
+	if(ret && size > 0)
+	{
+		char* jsonData = new char[size + 1];
+		for(int i = 0; i < size; i++) jsonData[i] = ret[i];
+		jsonData[size] = '\0';
+        
+        if(!json_is_valid(jsonData)) return;
+        
+        JSONNode* mainNode = (JSONNode*)json_parse(jsonData);
+        if(!mainNode) return;
+        
+        JSONNode::json_iterator itorMain = mainNode->begin();
+        while(itorMain != mainNode->end())
+        {
+            //            if(JSON_KEY_TOOLS == (*itorMain)->name())
+            {
+                JSONNode::json_iterator itorArray = (*itorMain)->begin();
+                while (itorArray != (*itorMain)->end())
+                {
+                    LockItem tConfig;
+                    JSONNode::json_iterator itorLevel = (*itorArray)->begin();
+                    while(itorLevel != (*itorArray)->end())
+                    {
+                        if(JSON_ITEM_KEY == (*itorLevel)->name()){
+							tConfig.itemName = (*itorLevel)->as_string();
+                        }
+                        else if(JSON_ITEM_ISFREE == (*itorLevel)->name()){
+                            if ( (*itorLevel)->as_bool() == true) {
+                                tConfig.isFree = true;
+                            }else {
+                                //                                CCLog("the true");
+                                tConfig.isFree =false;
+                            }
+                        }
+                        ++itorLevel;
+                    }
+                    
+                    ++itorArray;
+                    allcars.push_back(tConfig);
+                }
+            }
+            ++itorMain;
+        }
+        
+        JSONNode::deleteJSONNode(mainNode);
+		delete[] jsonData;
+	}
+    CCLog("the cars counts is %d", (int)allcars.size());
+    //对应getFileData,此接口是要手动清理内存的
+	if(!ret) delete[] ret;
+}
+
+vector<LockItem> DataContainer::getallCars(){
+    return allcars;
+}
+
+
 

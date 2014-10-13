@@ -75,6 +75,11 @@ typedef struct DeltaPositioin {
     float deltaRotate;
 }DeltaPositioin;
 
+typedef struct ToyPosition{
+    CCPoint pos1;
+    CCPoint pos2;
+}ToyPosition;
+
 #define theLockTagforAll 11111
 
 
@@ -132,5 +137,14 @@ typedef struct DeltaPositioin {
 #pragma mark "SortRoom Layer"
 #define SortRoomLayerPath "sorting/room/bg_room.jpg"
 #define JumpBGPath "sorting/jump/bg_jump.jpg"
+#define SortToyBGPath "sorting/toys_into/bg_toys_into.jpg"
+#define BlocksPath "datas/blocks.json"
+#define CarsPath "datas/cars.json"
+#define DollsPath "datas/dolls.json"
+//#define ToysNum 15
+
+#pragma mark "SelectCarLayer"
+#define SelectCarBGPath "bg/bg_select_cars.jpg"
+#define CarFilePath "datas/carsdata.json"
 #endif
 

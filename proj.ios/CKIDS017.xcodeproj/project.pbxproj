@@ -72,6 +72,8 @@
 		0134BEEE19C0494B00923C52 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0134BEED19C0494B00923C52 /* MessageUI.framework */; };
 		016B41AE19EB5F0F00E91597 /* JumpPandaLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 016B41AC19EB5F0F00E91597 /* JumpPandaLayer.cpp */; };
 		016B41B019EB6E0500E91597 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 016B41AF19EB6E0500E91597 /* fonts */; };
+		016B41B319EBB3D500E91597 /* SortToys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 016B41B119EBB3D500E91597 /* SortToys.cpp */; };
+		016B41B619EBE56900E91597 /* SelectCarLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 016B41B419EBE56900E91597 /* SelectCarLayer.cpp */; };
 		019AC58B19CA95B400C2540C /* particles in Resources */ = {isa = PBXBuildFile; fileRef = 019AC58A19CA95B400C2540C /* particles */; };
 		019AC58F19CAEB7300C2540C /* Insects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 019AC58D19CAEB7300C2540C /* Insects.cpp */; };
 		01A2991E19EA6C8400357039 /* SortRoomLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01A2991C19EA6C8400357039 /* SortRoomLayer.cpp */; };
@@ -602,6 +604,10 @@
 		016B41AC19EB5F0F00E91597 /* JumpPandaLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JumpPandaLayer.cpp; sourceTree = "<group>"; };
 		016B41AD19EB5F0F00E91597 /* JumpPandaLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpPandaLayer.h; sourceTree = "<group>"; };
 		016B41AF19EB6E0500E91597 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		016B41B119EBB3D500E91597 /* SortToys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SortToys.cpp; sourceTree = "<group>"; };
+		016B41B219EBB3D500E91597 /* SortToys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortToys.h; sourceTree = "<group>"; };
+		016B41B419EBE56900E91597 /* SelectCarLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SelectCarLayer.cpp; sourceTree = "<group>"; };
+		016B41B519EBE56900E91597 /* SelectCarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCarLayer.h; sourceTree = "<group>"; };
 		019AC58A19CA95B400C2540C /* particles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particles; sourceTree = "<group>"; };
 		019AC58D19CAEB7300C2540C /* Insects.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Insects.cpp; sourceTree = "<group>"; };
 		019AC58E19CAEB7300C2540C /* Insects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insects.h; sourceTree = "<group>"; };
@@ -2524,6 +2530,10 @@
 				01A2991D19EA6C8400357039 /* SortRoomLayer.h */,
 				016B41AC19EB5F0F00E91597 /* JumpPandaLayer.cpp */,
 				016B41AD19EB5F0F00E91597 /* JumpPandaLayer.h */,
+				016B41B119EBB3D500E91597 /* SortToys.cpp */,
+				016B41B219EBB3D500E91597 /* SortToys.h */,
+				016B41B419EBE56900E91597 /* SelectCarLayer.cpp */,
+				016B41B519EBE56900E91597 /* SelectCarLayer.h */,
 			);
 			name = Layers;
 			path = ../Classes/Layers;
@@ -3641,6 +3651,7 @@
 				01AD396F19C03CAD00DB0808 /* MPTimer.m in Sources */,
 				15A3D91E1682F7D5002FB0C5 /* b2PolygonAndCircleContact.cpp in Sources */,
 				15A3D91F1682F7D5002FB0C5 /* b2PolygonContact.cpp in Sources */,
+				016B41B319EBB3D500E91597 /* SortToys.cpp in Sources */,
 				01AD396D19C03CAD00DB0808 /* MPSessionTracker.m in Sources */,
 				15A3D9201682F7D5002FB0C5 /* b2DistanceJoint.cpp in Sources */,
 				15A3D9211682F7D5002FB0C5 /* b2FrictionJoint.cpp in Sources */,
@@ -3784,6 +3795,7 @@
 				012F73DF19BEF791007D2631 /* Util.cpp in Sources */,
 				15A3DA5F1682F826002FB0C5 /* CCPhysicsSprite.cpp in Sources */,
 				01AD395819C03CAD00DB0808 /* MRAdView.m in Sources */,
+				016B41B619EBE56900E91597 /* SelectCarLayer.cpp in Sources */,
 				15A3DAEB1682F8A6002FB0C5 /* CDAudioManager.m in Sources */,
 				15A3DAEC1682F8A6002FB0C5 /* CDOpenALSupport.m in Sources */,
 				01AD392B19C03CAD00DB0808 /* CDataScanner.m in Sources */,

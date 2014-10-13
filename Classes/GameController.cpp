@@ -19,6 +19,9 @@
 #include "SortMuralsLayer.h"
 #include "SortRoomLayer.h"
 #include "JumpPandaLayer.h"
+#include "SortToys.h"
+#include "SelectCarLayer.h"
+
 GameController::GameController(){
     chooseIndex = kGirlOne;
     isRemovedAD = CCUserDefault::sharedUserDefault()->getBoolForKey("isRemovedAD", false);
@@ -230,7 +233,22 @@ void GameController::gotoJumpLayer(){
     CCDirector::sharedDirector()->pushScene(transition);
 }
 
+void GameController::gotoSortToys(cocos2d::CCObject *pObj) {
+    CCScene* pScene = SortToys::scene(pObj);
+    CCTransitionScene* transition = CCTransitionMoveInR::create(0.5f, pScene);
+    CCDirector::sharedDirector()->pushScene(transition);
+}
 
-
-
+void GameController::gotoSelectCar(){
+    CCScene* pScene = SelectCar::scene();
+    CCTransitionScene* transition = CCTransitionMoveInR::create(0.5f, pScene);
+    if( CCDirector::sharedDirector()->getRunningScene() )
+    {
+        CCDirector::sharedDirector()->replaceScene(transition);
+    }
+    else{
+        CCDirector::sharedDirector()->runWithScene(transition);
+    }
+    
+}
 
