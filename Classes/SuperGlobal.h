@@ -80,6 +80,11 @@ typedef struct ToyPosition{
     CCPoint pos2;
 }ToyPosition;
 
+typedef struct IapItem{
+    string iapKey;
+    string itemPng;//资源图片
+}IapItem;
+
 #define theLockTagforAll 11111
 
 
@@ -150,5 +155,10 @@ typedef struct ToyPosition{
 #pragma mark "WashCarLayer"
 #define WashCarBGPath "bg/bg_garage.jpg"
 
+#pragma mark "ShopLayer"
+#define ShopFrameBGPath "ui/shop/bg_shop.png"
+#define RestorePng "ui/shop/btn_restore.png"
+#define ClosePng "ui/shop/btn_close.png"
+#define IapDataPath "datas/shopinfo.json"
 #endif
 

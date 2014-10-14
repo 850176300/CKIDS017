@@ -22,6 +22,7 @@
 #include "STAds.h"
 #include "STSystemFunction.h"
 #include "WellDoneLayer.h"
+#include "ShopLayerAdapter.h"
 #define kNoticeOnShopUpdate "ShopUpdateEvents"
 
 USING_NS_ST;

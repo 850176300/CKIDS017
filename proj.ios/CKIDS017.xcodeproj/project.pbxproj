@@ -75,6 +75,8 @@
 		016B41B319EBB3D500E91597 /* SortToys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 016B41B119EBB3D500E91597 /* SortToys.cpp */; };
 		016B41B619EBE56900E91597 /* SelectCarLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 016B41B419EBE56900E91597 /* SelectCarLayer.cpp */; };
 		0173CD6719ED0CD400D4C031 /* ShopLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0173CD6519ED0CD400D4C031 /* ShopLayer.cpp */; };
+		0173CD6C19ED1E2E00D4C031 /* ShopLayerAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0173CD6A19ED1E2E00D4C031 /* ShopLayerAdapter.cpp */; };
+		0173CD7019ED33B300D4C031 /* CarItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0173CD6E19ED33B300D4C031 /* CarItem.cpp */; };
 		019AC58B19CA95B400C2540C /* particles in Resources */ = {isa = PBXBuildFile; fileRef = 019AC58A19CA95B400C2540C /* particles */; };
 		019AC58F19CAEB7300C2540C /* Insects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 019AC58D19CAEB7300C2540C /* Insects.cpp */; };
 		01A2991E19EA6C8400357039 /* SortRoomLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01A2991C19EA6C8400357039 /* SortRoomLayer.cpp */; };
@@ -612,6 +614,10 @@
 		016B41B519EBE56900E91597 /* SelectCarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCarLayer.h; sourceTree = "<group>"; };
 		0173CD6519ED0CD400D4C031 /* ShopLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopLayer.cpp; sourceTree = "<group>"; };
 		0173CD6619ED0CD400D4C031 /* ShopLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopLayer.h; sourceTree = "<group>"; };
+		0173CD6A19ED1E2E00D4C031 /* ShopLayerAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopLayerAdapter.cpp; sourceTree = "<group>"; };
+		0173CD6B19ED1E2E00D4C031 /* ShopLayerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopLayerAdapter.h; sourceTree = "<group>"; };
+		0173CD6E19ED33B300D4C031 /* CarItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CarItem.cpp; sourceTree = "<group>"; };
+		0173CD6F19ED33B300D4C031 /* CarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarItem.h; sourceTree = "<group>"; };
 		019AC58A19CA95B400C2540C /* particles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particles; sourceTree = "<group>"; };
 		019AC58D19CAEB7300C2540C /* Insects.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Insects.cpp; sourceTree = "<group>"; };
 		019AC58E19CAEB7300C2540C /* Insects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insects.h; sourceTree = "<group>"; };
@@ -1488,6 +1494,8 @@
 				01D862EB19D274AB00F6D451 /* WellDoneLayer.h */,
 				01BF4DC619D7AF3A00560ADE /* DragItemLayer.cpp */,
 				01BF4DC719D7AF3A00560ADE /* DragItemLayer.h */,
+				0173CD6E19ED33B300D4C031 /* CarItem.cpp */,
+				0173CD6F19ED33B300D4C031 /* CarItem.h */,
 			);
 			name = items;
 			path = ../Classes/items;
@@ -2544,6 +2552,8 @@
 				01BD662719ECC0790068E65F /* WashCarLayer.h */,
 				0173CD6519ED0CD400D4C031 /* ShopLayer.cpp */,
 				0173CD6619ED0CD400D4C031 /* ShopLayer.h */,
+				0173CD6A19ED1E2E00D4C031 /* ShopLayerAdapter.cpp */,
+				0173CD6B19ED1E2E00D4C031 /* ShopLayerAdapter.h */,
 			);
 			name = Layers;
 			path = ../Classes/Layers;
@@ -3625,6 +3635,7 @@
 				01AD394119C03CAD00DB0808 /* MPAdServerCommunicator.m in Sources */,
 				01AD395519C03CAD00DB0808 /* MPMRAIDBannerCustomEvent.m in Sources */,
 				01AD395F19C03CAD00DB0808 /* MRJavaScriptEventEmitter.m in Sources */,
+				0173CD6C19ED1E2E00D4C031 /* ShopLayerAdapter.cpp in Sources */,
 				01AD396319C03CAD00DB0808 /* NSJSONSerialization+MPAdditions.m in Sources */,
 				01AD37A119C03C2000DB0808 /* EllipseAngular.cpp in Sources */,
 				01AD397719C03CAD00DB0808 /* UITableViewCell+MPNativeAd.m in Sources */,
@@ -3935,6 +3946,7 @@
 				01AD394D19C03CAD00DB0808 /* MPBaseInterstitialAdapter.m in Sources */,
 				01AD393219C03CAD00DB0808 /* CJSONDeserializer.m in Sources */,
 				379BB9B917F03F3700829B88 /* UIHelper.cpp in Sources */,
+				0173CD7019ED33B300D4C031 /* CarItem.cpp in Sources */,
 				379BB9BD17F03F3700829B88 /* UIListView.cpp in Sources */,
 				379BB9BE17F03F3700829B88 /* UIPageView.cpp in Sources */,
 				379BB9BF17F03F3700829B88 /* UIScrollView.cpp in Sources */,

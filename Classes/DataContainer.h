@@ -26,6 +26,8 @@ public:
     vector<ToyPosition> getDolls();
     vector<ToyPosition> getCars();
     vector<LockItem> getallCars();
+    vector<IapItem> getallIapItems();
+    IapItem getIapAtIndex(int index);
     void sortTypes();
     DeltaPositioin getdeltaTypeAt(int index);
 private:
@@ -37,7 +39,7 @@ private:
     vector<ToyPosition> carsPos;
     vector<ToyPosition> dollsPos;
     vector<LockItem> allcars;
-    
+    vector<IapItem> iapItems;
     int deltaOrder[3];
 private:
     void loadBabys();
@@ -47,5 +49,6 @@ private:
     void loadcarsData();
     void loaddollsData();
     void loadallcarsDatas();//加载卡车信息
+    void loadIaps();
 };
 #endif /* defined(__CKIDS017__DataContainer__) */

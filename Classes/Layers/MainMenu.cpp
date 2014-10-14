@@ -126,6 +126,7 @@ void MainMenu::onBtnClicked(cocos2d::CCObject *pObj) {
 //            Baby* baby = Baby::createWithParams(0);
 //            baby->setPosition(ccp(200, 200));
 //            addChild(baby, 12);
+            ShopLayerAdapter::getInstance()->showShopInNode(this);
         }
             break;
         case kMMMoreTag:

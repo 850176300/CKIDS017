@@ -20,6 +20,8 @@
 #define JSON_DELTA_ROTATE "deltaRoate"
 #define JSON_TOY_POS1 "pos1"
 #define JSON_TOY_POS2 "pos2"
+#define JSON_IAP_KEY "iapkey"
+#define JSON_ITEM_PNG "itempng"
 
 void DataContainer::loadDatas(){
     LockItem item1 = {"blueberry", true};
@@ -35,6 +37,7 @@ void DataContainer::loadDatas(){
     loadcarsData();
     loaddollsData();
     loadallcarsDatas();
+    loadIaps();
 }
 
 #pragma mark 加载所有babys的数据
@@ -477,5 +480,63 @@ vector<LockItem> DataContainer::getallCars(){
     return allcars;
 }
 
+void DataContainer::loadIaps(){
+    unsigned long size;
+	unsigned char* ret = CCFileUtils::sharedFileUtils()->getFileData(IapDataPath, "r", &size);
+	
+	if(ret && size > 0)
+	{
+		char* jsonData = new char[size + 1];
+		for(int i = 0; i < size; i++) jsonData[i] = ret[i];
+		jsonData[size] = '\0';
+        
+        if(!json_is_valid(jsonData)) return;
+        
+        JSONNode* mainNode = (JSONNode*)json_parse(jsonData);
+        if(!mainNode) return;
+        
+        JSONNode::json_iterator itorMain = mainNode->begin();
+        while(itorMain != mainNode->end())
+        {
+            //            if(JSON_KEY_TOOLS == (*itorMain)->name())
+            {
+                JSONNode::json_iterator itorArray = (*itorMain)->begin();
+                while (itorArray != (*itorMain)->end())
+                {
+                    IapItem tConfig;
+                    JSONNode::json_iterator itorLevel = (*itorArray)->begin();
+                    while(itorLevel != (*itorArray)->end())
+                    {
+                        if(JSON_IAP_KEY == (*itorLevel)->name()){
+							tConfig.iapKey = (*itorLevel)->as_string();
+                        }
+                        else if(JSON_ITEM_PNG == (*itorLevel)->name()){
+                            tConfig.itemPng = (*itorLevel)->as_string();
+                        }
+                        ++itorLevel;
+                    }
+                    
+                    ++itorArray;
+                    iapItems.push_back(tConfig);
+                }
+            }
+            ++itorMain;
+        }
+        
+        JSONNode::deleteJSONNode(mainNode);
+		delete[] jsonData;
+	}
+    CCLog("the iaps counts is %d", (int)iapItems.size());
+    //对应getFileData,此接口是要手动清理内存的
+	if(!ret) delete[] ret;
+}
 
+vector<IapItem> DataContainer::getallIapItems(){
+    return iapItems;
+}
+
+IapItem DataContainer::getIapAtIndex(int index) {
+    CCAssert(index >=0 && index < iapItems.size(), "index必须在规定的范围内");
+    return iapItems[index];
+}
 

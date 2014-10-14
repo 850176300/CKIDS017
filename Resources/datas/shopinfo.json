@@ -1,28 +1,28 @@
 {
-	"iapitems":[
-		{
-			"iapkey":"com.org.unlockall",
-			"itempng":"unlock_all.png"
-		},
-		{
-			"iapkey":"com.org.unlockallcars",
-			"itempng":"unlock_all_cars.png"
-		},
-		{
-			"iapkey":"com.org.unlockcleaningroom",
-			"itempng":"unlock_all_cleaningromm.png"
-		},
-		{
-			"iapkey":"com.org.unlockdrying",
-			"itempng":"unlock_all_drying.png"
-		},
-		{
-			"iapkey":"com.org.unlockplanting",
-			"itempng":"unlock_all_plantings.png"
-		},
-		{
-			"iapkey":"com.org.unlockad",
-			"itempng":"unlock_all_remove_ads.png"
-		}
-	]
+    "iapitems": [
+        {
+            "iapkey": "com.org.unlockall", 
+            "itempng": "unlock_all.png"
+        }, 
+        {
+            "iapkey": "com.org.unlockallcars", 
+            "itempng": "unlock_all_cars.png"
+        }, 
+        {
+            "iapkey": "com.org.unlockcleaningroom", 
+            "itempng": "unlock_all_cleaningromm.png"
+        }, 
+        {
+            "iapkey": "com.org.unlockdrying", 
+            "itempng": "unlock_all_drying.png"
+        }, 
+        {
+            "iapkey": "com.org.unlockplanting", 
+            "itempng": "unlock_all_plantings.png"
+        }, 
+        {
+            "iapkey": "com.org.unlockad", 
+            "itempng": "unlock_all_remove_ads.png"
+        }
+    ]
 }
