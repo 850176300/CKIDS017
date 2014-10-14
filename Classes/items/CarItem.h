@@ -28,7 +28,9 @@ public:
     void changeTiresState2();//......
     
 private:
-    LockItem currenCar;//当前用户选择的车型
+    int currentZorder;
+    CCSprite* mainCar;//主体---车
+    CarItemType currenCar;//当前用户选择的车型
 #pragma mark 轮胎变量定义
     CCSprite* tires1;
     CCSprite* tires2;

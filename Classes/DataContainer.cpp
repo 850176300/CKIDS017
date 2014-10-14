@@ -22,6 +22,9 @@
 #define JSON_TOY_POS2 "pos2"
 #define JSON_IAP_KEY "iapkey"
 #define JSON_ITEM_PNG "itempng"
+#define JSON_CAR_WHEEL_POS1 "wheel1"
+#define JSON_CAR_WHEEL_POS2 "wheel2"
+#define JSON_CAR_POS "centerPos"
 
 void DataContainer::loadDatas(){
     LockItem item1 = {"blueberry", true};
@@ -443,7 +446,7 @@ void DataContainer::loadallcarsDatas(){
                 JSONNode::json_iterator itorArray = (*itorMain)->begin();
                 while (itorArray != (*itorMain)->end())
                 {
-                    LockItem tConfig;
+                    CarItemType tConfig;
                     JSONNode::json_iterator itorLevel = (*itorArray)->begin();
                     while(itorLevel != (*itorArray)->end())
                     {
@@ -457,11 +460,22 @@ void DataContainer::loadallcarsDatas(){
                                 //                                CCLog("the true");
                                 tConfig.isFree =false;
                             }
+                        }else if (JSON_CAR_POS == (*itorLevel)->name()) {
+                            string pos = (*itorLevel)->as_string();
+                            tConfig.carPos = CCPointFromString(pos.c_str());
+                        }else if (JSON_CAR_WHEEL_POS1 == (*itorLevel)->name()) {
+                            string pos = (*itorLevel)->as_string();
+                            tConfig.wheel1Pos = CCPointFromString(pos.c_str());
+                        }else if (JSON_CAR_WHEEL_POS2 == (*itorLevel)->name()) {
+                            string pos = (*itorLevel)->as_string();
+                            tConfig.wheel2Pos = CCPointFromString(pos.c_str());
                         }
                         ++itorLevel;
                     }
                     
                     ++itorArray;
+                    tConfig.wheel1Pos = tConfig.carPos - tConfig.wheel1Pos;
+                    tConfig.wheel2Pos = tConfig.carPos - tConfig.wheel2Pos;
                     allcars.push_back(tConfig);
                 }
             }
@@ -476,7 +490,7 @@ void DataContainer::loadallcarsDatas(){
 	if(!ret) delete[] ret;
 }
 
-vector<LockItem> DataContainer::getallCars(){
+vector<CarItemType> DataContainer::getallCars(){
     return allcars;
 }
 

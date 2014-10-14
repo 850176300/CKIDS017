@@ -24,27 +24,38 @@ CarItem* CarItem::create(){
 
 bool CarItem::init(){
     if (CCNode::init()) {
+        currentZorder = 0;
         ignoreAnchorPointForPosition(false);
         currenCar = DataContainer::getInstance()->getallCars()[GameController::getInstance()->getChooseIndex()];
-        CCSprite* car = CCSprite::create(("ui/shop/"+currenCar.itemName).c_str());
-        setContentSize(car->getContentSize());
+        mainCar = CCSprite::create(("washing_cars/garage/fine_"+currenCar.itemName+".png").c_str());
+        setContentSize(mainCar->getContentSize());
+        mainCar->setPosition(ccp(mainCar->getContentSize().width / 2.0, mainCar->getContentSize().height/2.0));
+        addChild(mainCar, currentZorder++);
         
-        addChild(car, 0);
-        car->setAnchorPoint(ccp(0, 0));
-        car->setPosition(ccp(0, 0));
+        addTires1();
+        addTires2();
         
-        
+        setAnchorPoint(ccp(0.5f, 0.5f));
+        setPosition(STVisibleRect::getPosition(currenCar.carPos.x, currenCar.carPos.y));
         return true;
     }
     return false;
 }
 
 void CarItem::addTires1() {
-    
+//    tires1 = CCSprite::create(("washing_cars/garage/wheel/"+currenCar.itemName+"_0.png").c_str());
+        tires1 = CCSprite::create("washing_cars/garage/wheel/jeep_0.png");
+    tires1->setPosition(mainCar->getPosition() - currenCar.wheel1Pos);
+    tires1->setScale(0.8f);
+    addChild(tires1, currentZorder++);
 }
 
 void CarItem::addTires2() {
-    
+//    tires2 = CCSprite::create(("washing_cars/garage/wheel/"+currenCar.itemName+"_0.png").c_str());
+        tires2 = CCSprite::create("washing_cars/garage/wheel/jeep_0.png");
+    tires2->setPosition(mainCar->getPosition() - currenCar.wheel2Pos);
+    tires2->setScale(0.8f);
+    addChild(tires2, currentZorder++);
 }
 
 void CarItem::changeTiresState1(){

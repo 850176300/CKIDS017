@@ -13,6 +13,7 @@
 #include "cocos2d.h"
 #include "GameLayerBase.h"
 #include "MovableItem.h"
+#include "CarItem.h"
 USING_NS_CC;
 class WashCar: public GameLayerBase, public MovableItemDelegate{
     enum ItemTags{
@@ -27,6 +28,7 @@ public:
     virtual void itemDidMoved(MovableItem* pItem, CCPoint detla);
     virtual void onEnterTransitionDidFinish();
 private:
+    CarItem* myCar;
     void playHandTip();
     void setTouchItemCanTouch(MovableItem* pItem);//设置移动的元素可以被移动
     bool hasShowHandTip;

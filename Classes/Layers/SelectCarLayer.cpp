@@ -54,12 +54,12 @@ void SelectCar::onEnterTransitionDidFinish(){
 }
 
 CCMenu* SelectCar::createMenu(){
-    vector<LockItem> allcars = DataContainer::getInstance()->getallCars();
+    vector<CarItemType> allcars = DataContainer::getInstance()->getallCars();
 
 
     CCArray* allMenus = CCArray::createWithCapacity(allcars.size());
     for (vector<LockItem>::size_type i = 0; i < allcars.size(); ++i) {
-        MyItemSprite* item = MyItemSprite::menuItems(("washing_cars/select_cars/"+allcars[i].itemName).c_str());
+        MyItemSprite* item = MyItemSprite::menuItems(("washing_cars/select_cars/"+allcars[i].itemName+".png").c_str());
         item->setAnchorPoint(ccp(0, 0));
         item->setPosition(ccp(startx, 30));
         if (allcars[i].isFree == false) {

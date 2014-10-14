@@ -25,7 +25,7 @@ public:
     vector<ToyPosition> getBlocks();
     vector<ToyPosition> getDolls();
     vector<ToyPosition> getCars();
-    vector<LockItem> getallCars();
+    vector<CarItemType> getallCars();
     vector<IapItem> getallIapItems();
     IapItem getIapAtIndex(int index);
     void sortTypes();
@@ -38,7 +38,7 @@ private:
     vector<ToyPosition> blocksPos;
     vector<ToyPosition> carsPos;
     vector<ToyPosition> dollsPos;
-    vector<LockItem> allcars;
+    vector<CarItemType> allcars;
     vector<IapItem> iapItems;
     int deltaOrder[3];
 private:

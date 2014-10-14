@@ -37,6 +37,9 @@ bool WashCar::init(){
         addChild(tripItem, 2);
         
         maxDeltaY = tripItem->getContentSize().height * 0.5f - (STVisibleRect::getPointOfSceneLeftUp().y - tripItem->getPositionY());
+        
+        myCar = CarItem::create();
+        addChild(myCar, 10);
         return true;
     }
     return false;

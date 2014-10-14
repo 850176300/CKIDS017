@@ -1,28 +1,46 @@
 {
 	"items":[
 		{
-			"item":"car.png",
-			"isFree":true
+			"item":"car",
+			"isFree":true,
+			"wheel1":"{259,362}",
+			"wheel2":"{656,362}",
+			"centerPos":"{191,566}"
 		},
 		{
-			"item":"jeep.png",
-			"isFree":true
+			"item":"jeep",
+			"isFree":true,
+			"wheel1":"{268,364}",
+			"wheel2":"{685,364}",
+			"centerPos":"{214,604}"
 		},
 		{
-			"item":"police.png",
-			"isFree":true
+			"item":"police",
+			"isFree":true,
+			"wheel1":"{265,358}",
+			"wheel2":"{651,358}",
+			"centerPos":"{194,578}"
 		},
 		{
-			"item":"sports_car_1.png",
-			"isFree":false
+			"item":"sports_car_1",
+			"isFree":false,
+			"wheel1":"{234,367}",
+			"wheel2":"{684,367}",
+			"centerPos":"{169,502}"
 		},
 		{
-			"item":"sports_car_2.png",
-			"isFree":false
+			"item":"sports_car_2",
+			"isFree":false,
+			"wheel1":"{245,355}",
+			"wheel2":"{656,355}",
+			"centerPos":"{187,473}"
 		},
 		{
-			"item":"truck.png",
-			"isFree":false
+			"item":"truck",
+			"isFree":false,
+			"wheel1":"{0,0}",
+			"wheel2":"{0,0}",
+			"centerPos":"{0,0}"
 		}
 		
 	]

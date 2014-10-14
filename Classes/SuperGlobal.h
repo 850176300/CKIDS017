@@ -70,6 +70,14 @@ typedef struct DryClothe{
     CCPoint rightPoint;
 }DryClothe;
 
+typedef struct CarItemType{
+    string itemName;
+    bool isFree;
+    CCPoint wheel1Pos;
+    CCPoint wheel2Pos;
+    CCPoint carPos;
+}CarItemType;
+
 typedef struct DeltaPositioin {
     CCPoint deltaPos;
     float deltaRotate;
