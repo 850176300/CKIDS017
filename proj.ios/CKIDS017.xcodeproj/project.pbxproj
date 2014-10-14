@@ -74,6 +74,7 @@
 		016B41B019EB6E0500E91597 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 016B41AF19EB6E0500E91597 /* fonts */; };
 		016B41B319EBB3D500E91597 /* SortToys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 016B41B119EBB3D500E91597 /* SortToys.cpp */; };
 		016B41B619EBE56900E91597 /* SelectCarLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 016B41B419EBE56900E91597 /* SelectCarLayer.cpp */; };
+		0173CD6719ED0CD400D4C031 /* ShopLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0173CD6519ED0CD400D4C031 /* ShopLayer.cpp */; };
 		019AC58B19CA95B400C2540C /* particles in Resources */ = {isa = PBXBuildFile; fileRef = 019AC58A19CA95B400C2540C /* particles */; };
 		019AC58F19CAEB7300C2540C /* Insects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 019AC58D19CAEB7300C2540C /* Insects.cpp */; };
 		01A2991E19EA6C8400357039 /* SortRoomLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01A2991C19EA6C8400357039 /* SortRoomLayer.cpp */; };
@@ -251,6 +252,7 @@
 		01AFA37719C6DA6900DBB9D0 /* washing_cars in Resources */ = {isa = PBXBuildFile; fileRef = 01AFA37219C6DA6900DBB9D0 /* washing_cars */; };
 		01AFA37A19C6DB3100DBB9D0 /* washing_clothes in Resources */ = {isa = PBXBuildFile; fileRef = 01AFA37919C6DB3100DBB9D0 /* washing_clothes */; };
 		01B8B15619D5611200C227EF /* DryClothes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01B8B15419D5611200C227EF /* DryClothes.cpp */; };
+		01BD662819ECC0790068E65F /* WashCarLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01BD662619ECC0790068E65F /* WashCarLayer.cpp */; };
 		01BF4DC819D7AF3A00560ADE /* DragItemLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01BF4DC619D7AF3A00560ADE /* DragItemLayer.cpp */; };
 		01BF947519CC3138007A27F4 /* LittleSunComp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01BF947319CC3138007A27F4 /* LittleSunComp.cpp */; };
 		01BFBCD019C28CE500C6A097 /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01BFBCCE19C28CE500C6A097 /* MainMenu.cpp */; };
@@ -608,6 +610,8 @@
 		016B41B219EBB3D500E91597 /* SortToys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortToys.h; sourceTree = "<group>"; };
 		016B41B419EBE56900E91597 /* SelectCarLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SelectCarLayer.cpp; sourceTree = "<group>"; };
 		016B41B519EBE56900E91597 /* SelectCarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCarLayer.h; sourceTree = "<group>"; };
+		0173CD6519ED0CD400D4C031 /* ShopLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopLayer.cpp; sourceTree = "<group>"; };
+		0173CD6619ED0CD400D4C031 /* ShopLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopLayer.h; sourceTree = "<group>"; };
 		019AC58A19CA95B400C2540C /* particles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particles; sourceTree = "<group>"; };
 		019AC58D19CAEB7300C2540C /* Insects.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Insects.cpp; sourceTree = "<group>"; };
 		019AC58E19CAEB7300C2540C /* Insects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insects.h; sourceTree = "<group>"; };
@@ -978,6 +982,8 @@
 		01AFA37919C6DB3100DBB9D0 /* washing_clothes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = washing_clothes; sourceTree = "<group>"; };
 		01B8B15419D5611200C227EF /* DryClothes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DryClothes.cpp; sourceTree = "<group>"; };
 		01B8B15519D5611200C227EF /* DryClothes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DryClothes.h; sourceTree = "<group>"; };
+		01BD662619ECC0790068E65F /* WashCarLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WashCarLayer.cpp; sourceTree = "<group>"; };
+		01BD662719ECC0790068E65F /* WashCarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WashCarLayer.h; sourceTree = "<group>"; };
 		01BF205F19C693A0001B3857 /* TouchNodeTon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchNodeTon.h; sourceTree = "<group>"; };
 		01BF4DC619D7AF3A00560ADE /* DragItemLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragItemLayer.cpp; sourceTree = "<group>"; };
 		01BF4DC719D7AF3A00560ADE /* DragItemLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragItemLayer.h; sourceTree = "<group>"; };
@@ -2534,6 +2540,10 @@
 				016B41B219EBB3D500E91597 /* SortToys.h */,
 				016B41B419EBE56900E91597 /* SelectCarLayer.cpp */,
 				016B41B519EBE56900E91597 /* SelectCarLayer.h */,
+				01BD662619ECC0790068E65F /* WashCarLayer.cpp */,
+				01BD662719ECC0790068E65F /* WashCarLayer.h */,
+				0173CD6519ED0CD400D4C031 /* ShopLayer.cpp */,
+				0173CD6619ED0CD400D4C031 /* ShopLayer.h */,
 			);
 			name = Layers;
 			path = ../Classes/Layers;
@@ -3643,6 +3653,7 @@
 				01AD393319C03CAD00DB0808 /* CJSONScanner.m in Sources */,
 				01A2991E19EA6C8400357039 /* SortRoomLayer.cpp in Sources */,
 				012F73ED19BEF791007D2631 /* MyDialog.cpp in Sources */,
+				01BD662819ECC0790068E65F /* WashCarLayer.cpp in Sources */,
 				15A3D91C1682F7D5002FB0C5 /* b2EdgeAndCircleContact.cpp in Sources */,
 				01AD396919C03CAD00DB0808 /* MPGlobal.m in Sources */,
 				01C0917919D2B1C700509A40 /* WashClothes.cpp in Sources */,
@@ -3715,6 +3726,7 @@
 				15A3DA381682F826002FB0C5 /* CCControlButtonLoader.cpp in Sources */,
 				01AD392F19C03CAD00DB0808 /* CJSONSerializedData.m in Sources */,
 				01AD37E819C03C8400DB0808 /* JSONWorker.cpp in Sources */,
+				0173CD6719ED0CD400D4C031 /* ShopLayer.cpp in Sources */,
 				01C9A93119C96054003F646F /* TipLayer.cpp in Sources */,
 				01AFA36E19C6CEBF00DBB9D0 /* PlantingLayer.cpp in Sources */,
 				15A3DA391682F826002FB0C5 /* CCControlLoader.cpp in Sources */,

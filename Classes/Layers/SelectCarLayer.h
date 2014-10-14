@@ -29,5 +29,6 @@ private:
     void addScrollView();
     CCMenu* createMenu();
     void onItemClicked(CCObject* pObj);
+    void changeScene();
 };
 #endif /* defined(__CKIDS017__SelectCarLayer__) */

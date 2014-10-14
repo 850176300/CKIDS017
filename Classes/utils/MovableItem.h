@@ -64,6 +64,7 @@ public:
     static MovableItem* createWithTexture(CCTexture2D* texture);
     //constructor.
     MovableItem();
+    ~MovableItem();
     
     virtual void onEnter();
     virtual void onExit();

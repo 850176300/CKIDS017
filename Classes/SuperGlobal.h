@@ -146,5 +146,9 @@ typedef struct ToyPosition{
 #pragma mark "SelectCarLayer"
 #define SelectCarBGPath "bg/bg_select_cars.jpg"
 #define CarFilePath "datas/carsdata.json"
+
+#pragma mark "WashCarLayer"
+#define WashCarBGPath "bg/bg_garage.jpg"
+
 #endif
 

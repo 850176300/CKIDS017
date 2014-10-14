@@ -52,6 +52,13 @@ public:
     void gotoJumpLayer();
     void gotoSortToys(CCObject* pObj);
     void gotoSelectCar();
+    void gotoWashCar();
+//游戏数据保存
+    void setSelectedCarIndex(int index);
+    int getSelectCarIndex();
+private:
+    int selectedCarIndex;
+    void resetGameData();
 };
 
 #endif /* defined(__BBQParty__GameController__) */

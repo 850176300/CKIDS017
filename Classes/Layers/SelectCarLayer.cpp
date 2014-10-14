@@ -83,6 +83,7 @@ void SelectCar::onItemClicked(cocos2d::CCObject *pObj){
     if (menuItem->getChildByTag(theLockTagforAll)) {//表示这个item加了锁按钮。说明它被锁住了
 
     }else {
+        GameController::getInstance()->setSelectedCarIndex(menuItem->getTag());
         CCPoint thePoint = menuItem->getPosition()+ theScroll->getContentOffset() + ccp(STVisibleRect::getOriginalPoint().x, 0);
         CCLog("the position is %s", GetPointString(thePoint));
         CCSprite* selectedCar = CCSprite::createWithTexture(((CCSprite*)menuItem->getNormalImage())->getTexture());
@@ -92,9 +93,13 @@ void SelectCar::onItemClicked(cocos2d::CCObject *pObj){
         menuItem->setOpacity(0);
         theScroll->setTouchEnabled(false);
         theScroll->runAction(CCSequence::create(CCMoveBy::create(0.5f, ccp(0, -STVisibleRect::getGlvisibleSize().height)), CCCallFunc::create(theScroll, callfunc_selector(ScrollMenu::removeFromParent)), NULL));
-        selectedCar->runAction(CCSequence::create(CCDelayTime::create(0.5f), CCMoveTo::create(0.5f, ccp(STVisibleRect::getPointOfSceneRightBottom().x, selectedCar->getPositionY())), NULL));
+        selectedCar->runAction(CCSequence::create(CCDelayTime::create(0.5f), CCMoveBy::create(0.2f, ccp(0, -50)), CCMoveTo::create(0.5f, ccp(STVisibleRect::getPointOfSceneRightBottom().x, selectedCar->getPositionY()-50)),CCCallFunc::create(this, callfunc_selector(SelectCar::changeScene)), NULL));
         
     }
+}
+
+void SelectCar::changeScene(){
+    GameController::getInstance()->gotoWashCar();
 }
 
 

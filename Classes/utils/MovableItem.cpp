@@ -43,6 +43,12 @@ m_pMovableItemDelegate(0)
 {
 }
 
+MovableItem::~MovableItem(){
+    if (getTouchable() == true) {
+        CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+    }
+}
+
 bool MovableItem::initWithFile(const char *pszFilename)
 {
     if(ItemBase::initWithFile(pszFilename))
@@ -88,6 +94,7 @@ void MovableItem::onExit()
 {
     CCNotificationCenter::sharedNotificationCenter()->removeObserver(this, NotifyGLViewWillLoseFocus);
 //    ItemBase::onExit();
+
     CCSprite::onExit();
 }
 

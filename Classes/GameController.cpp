@@ -21,6 +21,7 @@
 #include "JumpPandaLayer.h"
 #include "SortToys.h"
 #include "SelectCarLayer.h"
+#include "WashCarLayer.h"
 
 GameController::GameController(){
     chooseIndex = kGirlOne;
@@ -64,6 +65,7 @@ float GameController::getBannerHeight() {
 
 #pragma show all layers
 void GameController::gotoMainMenu(bool LorR /*= false */){
+    resetGameData();
     CCScene* pScene = MainMenu::scene();
     CCTransitionScene* transition = NULL;
     if (LorR) {
@@ -249,6 +251,28 @@ void GameController::gotoSelectCar(){
     else{
         CCDirector::sharedDirector()->runWithScene(transition);
     }
-    
 }
 
+void GameController::gotoWashCar(){
+    CCScene* pScene = WashCar::scene();
+    CCTransitionScene* transition = CCTransitionMoveInR::create(0.5f, pScene);
+    if( CCDirector::sharedDirector()->getRunningScene() )
+    {
+        CCDirector::sharedDirector()->replaceScene(transition);
+    }
+    else{
+        CCDirector::sharedDirector()->runWithScene(transition);
+    }
+}
+
+void GameController::setSelectedCarIndex(int index) {
+    selectedCarIndex = index;
+}
+
+int GameController::getSelectCarIndex(){
+    return selectedCarIndex;
+}
+
+void GameController::resetGameData(){
+    selectedCarIndex = -1;
+}
