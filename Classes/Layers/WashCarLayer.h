@@ -14,11 +14,25 @@
 #include "GameLayerBase.h"
 #include "MovableItem.h"
 #include "CarItem.h"
+#include "ScrollMenu.h"
 USING_NS_CC;
+using namespace std;
 class WashCar: public GameLayerBase, public MovableItemDelegate{
     enum ItemTags{
         kTripTag = 6111,
-        
+        kGasTags,
+        kgasPariticlesTags,
+        kBlowTags,
+    };
+    
+    enum ToolStates{
+        kGasToolStep = 61,
+        kBlowToolStep ,
+        kHoseToolStep,
+        kSpongeToolStep,
+        kCleanToolStep,
+        kHose2ToolStep,
+        kWaxToolStep,
     };
 public:
     static CCScene* scene();
@@ -26,13 +40,34 @@ public:
     CREATE_FUNC(WashCar);
     virtual void ItemDidBackToStartLocation(MovableItem* pItem);
     virtual void itemDidMoved(MovableItem* pItem, CCPoint detla);
+    virtual void itemTouchDidBegan(ItemBase *pItem, cocos2d::CCTouch *pTouch);
     virtual void onEnterTransitionDidFinish();
 private:
+    ScrollMenu* washMenu;
+    CCMenu* toolMenu ;//menu 工具
+    ToolStates currenState;
     CarItem* myCar;
     void playHandTip();
     void setTouchItemCanTouch(MovableItem* pItem);//设置移动的元素可以被移动
     bool hasShowHandTip;
     CCSprite* garageDoor;//车库的门
     float maxDeltaY;//链子最大的y偏移
+    //添加工具栏，只起指示作用
+    void addtooltips();
+    void moveToolTip();
+    void performState();//根据当前的步骤做出反应
+//1.添加汽油
+    void addgasTool();
+    MovableItem* gasTool;
+    CCSprite* gasBox;//加油箱
+    float gasmaxy , gasminy;
+    CCParticleSystemQuad* oilP;
+    void checkoilin();//判断是否将油加进去了
+//2.车胎充气
+    void addblowTool();
+    MovableItem* blowTool;//充气工具
+    float blowmaxX, blowminX;
+    void playBlowAnimation();//播放充气动画
+    
 };
 #endif /* defined(__CKIDS017__WashCarLayer__) */

@@ -474,8 +474,6 @@ void DataContainer::loadallcarsDatas(){
                     }
                     
                     ++itorArray;
-                    tConfig.wheel1Pos = tConfig.carPos - tConfig.wheel1Pos;
-                    tConfig.wheel2Pos = tConfig.carPos - tConfig.wheel2Pos;
                     allcars.push_back(tConfig);
                 }
             }

@@ -41,7 +41,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
     
     DataContainer::getInstance()->loadDatas();
-    GameController::getInstance()->gotoSelectCar();
+    GameController::getInstance()->gotoWashCar();
     return true;
 }
 

@@ -274,5 +274,5 @@ int GameController::getSelectCarIndex(){
 }
 
 void GameController::resetGameData(){
-    selectedCarIndex = -1;
+    selectedCarIndex = 0;
 }
