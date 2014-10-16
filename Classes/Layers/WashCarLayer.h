@@ -23,6 +23,8 @@ class WashCar: public GameLayerBase, public MovableItemDelegate{
         kGasTags,
         kgasPariticlesTags,
         kBlowTags,
+        kHoseTags,
+        kSpongeTags,
     };
     
     enum ToolStates{
@@ -42,6 +44,8 @@ public:
     virtual void itemDidMoved(MovableItem* pItem, CCPoint detla);
     virtual void itemTouchDidBegan(ItemBase *pItem, cocos2d::CCTouch *pTouch);
     virtual void onEnterTransitionDidFinish();
+    void blowHandTip(bool startLocation = false);
+    void finishblowstep();
 private:
     ScrollMenu* washMenu;
     CCMenu* toolMenu ;//menu 工具
@@ -68,6 +72,15 @@ private:
     MovableItem* blowTool;//充气工具
     float blowmaxX, blowminX;
     void playBlowAnimation();//播放充气动画
+    void firstPlayhandTip();
+//3.水枪
+    MovableItem* hoseTool;//水枪工具
+    CCParticleSystemQuad* waterParticle;
+    float minhosey, maxhosey;//水枪移动的最大y和最小y
+    void addhoseTools();
+//4.涂抹工具
+    MovableItem* spongeTool;//涂抹工具
+    void addSpongeTool();
     
 };
 #endif /* defined(__CKIDS017__WashCarLayer__) */

@@ -47,7 +47,7 @@ bool WashCar::init(){
         
         myCar->setVisible(false);
         myCar->setPosition(myCar->getPosition()+ccp(-STVisibleRect::getGlvisibleSize().width, 0));
-        currenState = kGasToolStep;
+        currenState = kSpongeToolStep;
         return true;
     }
     return false;
@@ -158,12 +158,16 @@ void WashCar::performState(){
             break;
         case kHoseToolStep:
         {
-            
+            moveToolTip();
+            addhoseTools();
+            myCar->addhoseBubble();
         }
             break;
         case kSpongeToolStep:
         {
-            
+//            moveToolTip();
+            myCar->addspongePainter();
+            addSpongeTool();
         }
             break;
         case kCleanToolStep:
@@ -223,7 +227,7 @@ void WashCar::checkoilin(){
 #pragma mark 给车胎充气
 void WashCar::addblowTool(){
     blowTool = MovableItem::create("washing_cars/garage/tool_blow1.png");
-    blowTool->setTouchable(true);
+    blowTool->setTouchable(false);
     blowTool->setTouchEndHandleType(kMovableItemTouchEndStop);
     blowTool->setTag(kBlowTags);
     blowTool->setMovableItemDelegate(this);
@@ -232,6 +236,46 @@ void WashCar::addblowTool(){
     addChild(blowTool, 10);
     blowminX = STVisibleRect::getOriginalPoint().x;
     blowmaxX = STVisibleRect::getPointOfSceneRightBottom().x;
+    blowTool->setPosition(blowTool->getPosition() + ccp(STVisibleRect::getGlvisibleSize().width, 0));
+    blowTool->runAction(CCSequence::create(CCMoveBy::create(0.5f, ccp(-STVisibleRect::getGlvisibleSize().width, 0)),CCCallFunc::create(this, callfunc_selector(WashCar::firstPlayhandTip)),NULL));
+}
+
+void WashCar::firstPlayhandTip(){
+    blowHandTip(true);
+}
+
+void WashCar::blowHandTip(bool startLocation){
+    blowTool->stopAllActions();
+    blowTool->setTexture(CCSprite::create("washing_cars/garage/tool_blow1.png")->getTexture());
+    CCSprite* hand = CCSprite::create("ui/prompt/hand.png");
+    hand->setAnchorPoint(ccp(0.2f, 0.8f));
+
+    CCPoint toPos;
+    if (startLocation == true) {
+        toPos = blowTool->getStartLocation();
+    }else {
+        toPos = blowTool->getPosition();
+    }
+    hand->setPosition(toPos);
+    addChild(hand, 12);
+    
+    hand->runAction(CCSequence::create(
+                                       CCDelayTime::create(0.1f),
+                                       CCMoveBy::create(0.2f, ccp(-100, 0)),
+                                       CCDelayTime::create(0.1f),
+                                       CCMoveBy::create(0.3f, ccp(200, 0)),
+                                       CCDelayTime::create(0.1f),
+                                       CCMoveBy::create(0.2f, ccp(100, 0)),
+                                       CCFadeOut::create(0.1f),
+                                       CCCallFuncO::create(this, callfuncO_selector(WashCar::setTouchItemCanTouch), blowTool),
+                                       CCCallFunc::create(hand, callfunc_selector(CCSprite::removeFromParent)),
+                                       NULL
+                                       ));
+}
+
+void WashCar::finishblowstep(){
+    currenState = kHoseToolStep;
+    blowTool->runAction(CCSequence::create(CCMoveBy::create(0.5f, ccp(-STVisibleRect::getGlvisibleSize().width-1000, 0)),CCCallFunc::create(this, callfunc_selector(WashCar::performState)), CCCallFunc::create(blowTool, callfunc_selector(MovableItem::removeFromParent)), NULL));
 }
 
 void WashCar::playBlowAnimation(){
@@ -248,7 +292,38 @@ void WashCar::playBlowAnimation(){
     
     blowTool->runAction(animate);
 }
+#pragma mark 使用水枪
+void WashCar::addhoseTools(){
+    hoseTool = MovableItem::create("washing_cars/garage/tool_hose.png");
+    hoseTool->setPosition(ccp(STVisibleRect::getCenterOfScene().x, STVisibleRect::getOriginalPoint().y+100));
+    hoseTool->setStartLocation(hoseTool->getPosition());
+    hoseTool->setTag(kHoseTags);
+    hoseTool->setMovableItemDelegate(this);
+    hoseTool->setTouchable(false);
+    hoseTool->setTouchEndHandleType(kMovableItemTouchEndStop);
+    minhosey = STVisibleRect::getOriginalPoint().y-(hoseTool->getContentSize().height-GameController::getInstance()->getBannerHeight()-20);
+    maxhosey = STVisibleRect::getOriginalPoint().y + hoseTool->getContentSize().height - 20;
+    hoseTool->setPosition(hoseTool->getPosition() + ccp(0, -STVisibleRect::getGlvisibleSize().height));
+    addChild(hoseTool, 11);
+    
+    hoseTool->runAction(CCSequence::create(CCMoveBy::create(0.5f, ccp(0, STVisibleRect::getGlvisibleSize().height)), CCCallFuncO::create(this, callfuncO_selector(WashCar::setTouchItemCanTouch), hoseTool),NULL));
+    
+}
 
+#pragma mark 使用涂抹工具
+void WashCar::addSpongeTool(){
+    spongeTool = MovableItem::create("washing_cars/garage/sponge.png");
+    spongeTool->setPosition(STVisibleRect::getCenterOfScene());
+    spongeTool->setStartLocation(spongeTool->getPosition());
+    spongeTool->setTouchable(false);
+    spongeTool->setTouchEndHandleType(kMovableItemTouchEndStop);
+    spongeTool->setMovableItemDelegate(this);
+    spongeTool->setTag(kSpongeTags);
+    addChild(spongeTool, 11);
+    
+    spongeTool->setPosition(spongeTool->getPosition() + ccp(STVisibleRect::getGlvisibleSize().width, 0));
+    spongeTool->runAction(CCSequence::create(CCMoveBy::create(0.5f, ccp(-STVisibleRect::getGlvisibleSize().width, 0)), CCCallFuncO::create(this, callfuncO_selector(WashCar::setTouchItemCanTouch), spongeTool),NULL));
+}
 
 void WashCar::ItemDidBackToStartLocation(MovableItem *pItem) {
     if (pItem->getTag() == kTripTag) {
@@ -279,6 +354,13 @@ void WashCar::ItemDidBackToStartLocation(MovableItem *pItem) {
             pItem->setTouchable(false);
             playBlowAnimation();
         }
+    }else if (pItem->getTag() == kHoseTags) {
+        waterParticle->removeFromParent();
+        if (myCar->isHoseStepFinished() == true) {
+            hoseTool->setTouchable(false);
+            currenState = kSpongeToolStep;
+            hoseTool->runAction(CCSequence::create(CCMoveBy::create(0.5f, ccp(0, -STVisibleRect::getGlvisibleSize().height)), CCCallFunc::create(this, callfunc_selector(WashCar::performState)), CCCallFunc::create(hoseTool, callfunc_selector(MovableItem::removeFromParent)),NULL));
+        }
     }
 }
 
@@ -297,6 +379,29 @@ void WashCar::itemDidMoved(MovableItem *pItem, cocos2d::CCPoint detla) {
             pItem->setPositionX(pItem->getPositionX() + detla.x);
             myCar->checkTireToolin(myCar->convertToNodeSpace(pItem->getPosition()+ccp(-pItem->getContentSize().width/2.0, 0)));
         }
+    }else if (pItem->getTag() == kHoseTags){
+        CCRect hoseRect = CCRectMake(STVisibleRect::getOriginalPoint().x, minhosey, STVisibleRect::getGlvisibleSize().width+200, maxhosey-minhosey);
+        CCRect itemRect = hoseTool->boundingBox();
+        itemRect.origin = itemRect.origin + detla;
+        if (STVisibleRect::JudgeContain(hoseRect, itemRect)) {
+            hoseTool->setPosition(hoseTool->getPosition() + detla);
+            waterParticle->setPosition(pItem->convertToWorldSpace(ccp(0, pItem->getContentSize().height - 6)));
+            if (myCar->boundingBox().containsPoint(waterParticle->getPosition()+ccp(-100, 50)) && myCar->isHoseStepFinished() == false) {
+                myCar->changeBubbleState();
+                CCParticleSystemQuad* particle = CCParticleSystemQuad::create("particles/dirtyexplor.plist");
+                particle->setPosition(waterParticle->getPosition()+ccp(-100, 50));
+                addChild(particle, 11);
+            }
+
+        }
+    }else if (pItem->getTag() == kSpongeTags) {
+        CCRect itemrect = pItem->boundingBox();
+        itemrect.origin = itemrect.origin + detla;
+        if (STVisibleRect::JudgeContain(STVisibleRect::getMovableRect(), itemrect)) {
+            pItem->setPosition(pItem->getPosition() + detla);
+            myCar->spongePanit(myCar->convertToNodeSpace(pItem->getPosition()), myCar->convertToNodeSpace(pItem->getPosition() - detla));
+        }
+        
     }
 }
 
@@ -308,5 +413,9 @@ void WashCar::itemTouchDidBegan(ItemBase *pItem, cocos2d::CCTouch *pTouch) {
         oilP->setTag(kgasPariticlesTags);
         addChild(oilP, 12);
         schedule(schedule_selector(WashCar::checkoilin));
+    }else if (pItem->getTag() == kHoseTags) {
+        waterParticle = CCParticleSystemQuad::create("particles/wateranimation.plist");
+        waterParticle->setPosition(pItem->convertToWorldSpace(ccp(0, pItem->getContentSize().height - 6)));
+        addChild(waterParticle, 12);
     }
 }

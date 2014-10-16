@@ -18,8 +18,12 @@
 USING_NS_CC;
 
 class CarItem: public CCLayerColor{
+    enum CarItemTAG {
+        kTire1TAG=61,
+        kTire2TAG,
+    };
 public:
-    ~CarItem(){CC_SAFE_DELETE(_scribble);};
+    ~CarItem(){CC_SAFE_DELETE(_scribble); CC_SAFE_DELETE(_paintScribble);};
     static CarItem* create();
     virtual bool init();
     void moveByDistance(float dt, CCPoint distance);
@@ -37,6 +41,13 @@ public:
     void addTireTip();//显示车胎加气提示
     void checkTireToolin(CCPoint pos);
     bool checkisSelected();//判断当前有没有选择轮胎
+//3.水枪洗车
+    void addhoseBubble();//添加水枪留下的痕迹
+    void changeBubbleState();//改变水痕的透明度
+    bool isHoseStepFinished();//判断水枪操作是否完成
+//4.涂抹工具
+    void addspongePainter();//添加涂抹图层
+    void spongePanit(CCPoint prelocation, CCPoint location);
 private:
     int currentZorder;
     CCSprite* mainCar;//主体---车
@@ -51,12 +62,19 @@ private:
     CCSprite* currentSelectTire;//当前选择加油的轮胎
     int tireCount;
     int tireIndex;
+    bool tire1Finished;
+    bool tire2Finished;
 #pragma mark 加油的油孔定义
     CCSprite* gasSprite;//加油的油孔
     int gasCount;//计数用
     int gasIndex;//标志当前油箱的油
     bool gasisFull;//标志油已加满
-    
+#pragma mark 水枪操作定义
+    CCSprite* waterBubble;//水痕迹定义
+    bool hoseStepFinished;//水枪冲洗操作是否完成
+#pragma mark 涂抹过程工具定义
+    DaubSprite* sponePaniter;
+    Scribble* _paintScribble;
 private:
     void addTires1();//添加前面轮胎
     void addTires2();//..后面...
