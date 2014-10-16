@@ -1,3 +1,0 @@
-this folder contain all the tools and some items which need write to a package.
-
-将需要封装成类的一些比较小的item，存放在这个文件夹中
